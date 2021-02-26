@@ -1,0 +1,102 @@
+.stats-string {
+  display: grid;
+  grid-gap: 0;
+  grid-template-columns: minmax(max-content, 250px) minmax(max-content, 250px);
+  grid-template-rows: repeat(2, auto);
+  justify-items: center;
+
+  // background: linear-gradient(0.25turn, #59d2e7, #f8faf7, #f6673c);
+
+  .round-1-stats,
+  .round-2-stats,
+  .round-3-stats {
+    grid-column-start: 1;
+    grid-column-end: 3;
+
+    display: grid;
+    grid-template-columns: minmax(max-content, 250px) minmax(max-content, 250px);
+    grid-template-rows: repeat(3, auto);
+  }
+
+  .round-1,
+  .round-2,
+  .round-3 {
+    display: block;
+    grid-column-start: 1;
+    grid-column-end: 3;
+
+    width: 100%;
+    width: -moz-available; /* WebKit-based browsers will ignore this. */
+    width: -webkit-fill-available; /* Mozilla-based browsers will ignore this. */
+    width: fill-available;
+
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.089);
+  }
+
+  // h2 {
+  //   // text-transform: capitalize;
+  // }
+
+  h2,
+  h3 {
+    color: rgb(83, 83, 83);
+    margin: 0 auto;
+    padding: 3px 15px;
+  }
+
+  h3 {
+    font-size: 14px;
+    font-weight: lighter;
+  }
+
+  p {
+    margin: 5px;
+    font-weight: 600;
+  }
+}
+
+.hidden {
+  display: none !important;
+}
+
+
+.battlefield {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  height: 20rem;
+  width: 25rem;
+  margin: auto;
+
+  // position: relative;
+  // width: 100%;
+  // padding-top: 100%;
+
+  .weapon {
+    display: block;
+    height: 7rem;
+    width: 7rem;
+    margin: auto;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    // position:  absolute;
+    // top: 0;
+    // left: 0;
+    // bottom: 0;
+    // right: 0;
+  }
+  .rock {
+    background-image: url('../../assets/rock.svg');
+  }
+  .scissors {
+    background-image: url('../../assets/scissors.svg');
+    grid-row: 2/3;
+    grid-column: 2/3;
+  }
+  .paper {
+    background-image: url('../../assets/paper.svg');
+    grid-column: 3/4;
+  }
+}

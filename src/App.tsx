@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.scss';
-import Game from './components/Game';
+import Game from './components/Game/Game';
 import githubLogo from './assets/github-logo.svg';
 import RSSLogo from './assets/rs_school_js.svg';
 import youtubeLogo from './assets/youtube.svg';
