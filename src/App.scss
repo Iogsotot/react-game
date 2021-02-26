@@ -1,1 +1,9 @@
+.App {
+  display: grid;
+  grid-template-rows: 8rem auto 8rem;
+  height: 100vh;
 
+  main {
+    margin: auto;
+  }
+}
