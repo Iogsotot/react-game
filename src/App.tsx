@@ -5,14 +5,20 @@ import githubLogo from './assets/github-logo.svg';
 import RSSLogo from './assets/rs_school_js.svg';
 import youtubeLogo from './assets/youtube.svg';
 
+import Setting from './components/Modals/Setting';
+import Help from './components/Modals/Help';
+import Score from './components/Modals/Score';
+import Sounds from './components/Modals/Sounds';
+
 function App() {
   return (
     <div className='App'>
       <header className='App__header'>
-        <button className='btn'>Settings</button>
-        <button className='btn'>Score</button>
+        <Setting />
+        <Score />
         <button className='btn'>New game</button>
-        <button className='btn'>I can't undestand</button>
+        <Help />
+        <Sounds />
       </header>
       <Game />
       <footer className='App__footer'>
@@ -26,11 +32,13 @@ function App() {
             </div>
             <div className='RSS'>
               <img src={RSSLogo} className='icon' alt='RSSchool' />
-              <a href='https://rs.school/js/' className='link'></a>
+              <a href='https://rs.school/js/' className='link'> </a>
             </div>
             <div className='youtube'>
               <img src={youtubeLogo} className='icon' alt='youtube link' />
-              <a href='https://www.youtube.com/watch?v=3-Zh_DAzCi0&feature=youtu.be' className='link'>game Review</a>
+              <a href='https://www.youtube.com/watch?v=3-Zh_DAzCi0&feature=youtu.be' className='link'>
+                game Review
+              </a>
             </div>
           </div>
         </div>
