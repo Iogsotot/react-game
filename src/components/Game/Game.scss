@@ -7,7 +7,7 @@
 
   // background: linear-gradient(0.25turn, #59d2e7, #f8faf7, #f6673c);
 
-  .round-1-stats,
+  .round-stats,
   .round-2-stats,
   .round-3-stats {
     grid-column-start: 1;
@@ -18,7 +18,7 @@
     grid-template-rows: repeat(3, auto);
   }
 
-  .round-1,
+  .round,
   .round-2,
   .round-3 {
     display: block;
@@ -28,7 +28,7 @@
     width: 100%;
     width: -moz-available; /* WebKit-based browsers will ignore this. */
     width: -webkit-fill-available; /* Mozilla-based browsers will ignore this. */
-    width: fill-available;
+    // width: fill-available;  // react warning
 
     text-align: center;
     background-color: rgba(0, 0, 0, 0.089);
@@ -60,14 +60,16 @@
   display: none !important;
 }
 
-
 .battlefield {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: 1fr 0.1fr 1fr;
   height: 20rem;
-  width: 25rem;
+  width: 20rem;
   margin: auto;
+  // padding: 3rem;
+
+  // animation: 7s infinite spin linear;
 
   // position: relative;
   // width: 100%;
@@ -75,28 +77,63 @@
 
   .weapon {
     display: block;
-    height: 7rem;
-    width: 7rem;
-    margin: auto;
+    // height: 7rem;
+    // width: 7rem;
+    // margin: auto;
     background-repeat: no-repeat;
     background-position: center;
 
-    // position:  absolute;
-    // top: 0;
-    // left: 0;
-    // bottom: 0;
-    // right: 0;
+    
   }
   .rock {
-    background-image: url('../../assets/rock.svg');
+    background-image: url("../../assets/rock.svg");
   }
   .scissors {
-    background-image: url('../../assets/scissors.svg');
-    grid-row: 2/3;
+    background-image: url("../../assets/scissors.svg");
+    background-position: bottom;
+    grid-row: 3/4;
     grid-column: 2/3;
   }
   .paper {
-    background-image: url('../../assets/paper.svg');
+    background-image: url("../../assets/paper.svg");
     grid-column: 3/4;
+  }
+
+  // .centre {
+  //   grid-row: 2/3;
+  //   grid-column: 2/3;
+  // }
+}
+
+// animations
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes jump {
+  from {
+    transform: translateY(15rem);
+    animation-timing-function: ease-out;
+  }
+  25% {
+    top: 50px;
+    animation-timing-function: ease-in;
+  }
+  50% {
+    top: 150px;
+    animation-timing-function: ease-out;
+  }
+  75% {
+    top: 75px;
+    animation-timing-function: ease-in;
+  }
+  to {
+    top: 100px;
   }
 }
