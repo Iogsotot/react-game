@@ -1,3 +1,7 @@
+$darkest: #004d40;
+$dark: #009688;
+$primary:#b2dfdb;
+
 .stats-string {
   display: grid;
   grid-gap: 0;
@@ -51,7 +55,8 @@
       left: 50%;
       width: 100vw;
       transform: translateX(-50%);
-      background-color: rgba(0, 0, 0, 0.089);
+      background-color: $darkest;
+      opacity: 0.15;
     }
   }
 

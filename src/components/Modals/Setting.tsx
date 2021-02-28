@@ -14,27 +14,41 @@ export default function Setting() {
       {isOpen && (
         <div className='modal'>
           <div className='modal__body'>
-            <button onClick={() => setIsOpen(false)}>Close modal</button>
-            <h1>Settings</h1>
-            <input type='text' className='players-name' placeholder='your name' />
+            <h1 className='modal__title'>Settings</h1>
+            <label htmlFor='inp' className='players-name'>
+              <input type='text' id='inp' placeholder='&nbsp;' />
+              <span className='label'>Your name</span>
+              <span className='focus-bg'></span>
+            </label>
             <div className='game-skin'>
-              Select game skin:
-              <div className='game-skin--round-icons'>round-icons</div>
-              <div className='game-skin--cats-icons'>cats-icons</div>
+              <h3 className='modal__subtitle'>Select game skin:</h3>
+              <div className='game-skin--round-icons icon--setting'>round-icons</div>
+              <div className='game-skin--cats-icons icon--setting'>cats-icons</div>
             </div>
             <div className='game-lang'>
-              Select language:
-              <div className='game-lang--ru'>ru</div>
-              <div className='game-lang--en'>en</div>
+              <h3 className='modal__subtitle'>Select language:</h3>
+              <div className='game-lang--ru icon--setting'>ru</div>
+              <div className='game-lang--en icon--setting'>en</div>
             </div>
             <div className='game-mode'>
-              Select game mode:
-              <div className='game-mode--ru'>normal</div>
-              <div className='game-mode--en'>intersting</div>
+              <h3 className='modal__subtitle'>Select game mode:</h3>
+              <div className='game-mode--ru icon--setting'>normal</div>
+              <div className='game-mode--en icon--setting'>intersting</div>
             </div>
-            <button className='button start-game' type='submit'>
+            <Button onClick={() => setIsOpen(false)} variant='contained' color='primary' className='btn btn--close'>
+              Close
+            </Button>
+            <Button
+              onClick={() => console.log('start battle')}
+              variant='contained'
+              color='primary'
+              className='btn btn--start-game'
+            >
+              Start!
+            </Button>
+            {/* <button className='button start-game' type='submit'>
               Start battle!
-            </button>
+            </button> */}
           </div>
         </div>
       )}

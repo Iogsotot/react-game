@@ -1,15 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import Button from '@material-ui/core/Button';
 import './Game.scss';
+// import '../Modals/Modal.scss';
 import { GameProps } from '../types';
 import { Weapons } from '../constants';
-
-import Button from '@material-ui/core/Button';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import CloseIcon from '@material-ui/icons/Close';
 
 export default function Game({ count = 0, result = '' }: GameProps) {
   const [roundCount, setRoundCount] = useState(count);
@@ -17,8 +11,9 @@ export default function Game({ count = 0, result = '' }: GameProps) {
   const [playerTwoResult, setPlayerTwoResult] = useState(result);
   const [playerOneScore, setPlayerOneScore] = useState(count);
   const [playerTwoScore, setPlayerTwoScore] = useState(count);
-  const [roundResult, setRoundResult] = useState("");
-  const [endGameMsg, setEndGameMsg] = useState("");
+  const [roundResult, setRoundResult] = useState('');
+  const [endGameMsg, setEndGameMsg] = useState('');
+  const [myModalClass, setMyModalClass] = useState('');
 
   let totalGames: number = 3;
   let playerOneName: string = 'Player 1';
@@ -37,22 +32,23 @@ export default function Game({ count = 0, result = '' }: GameProps) {
     setRoundCount(0);
     setPlayerOneResult('');
     setPlayerTwoResult('');
+    // document.removeEventListener('click', () => closeModal());
   }
 
-  const [open, setOpen] = React.useState(false);
+  // const [isOpen, setOpen] = React.useState(false);
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
+  // const handleClickOpen = () => {
+  //   setOpen(true);
+  // };
 
-  const handleClose = () => {
-    setOpen(false);
-  };
+  // const handleClose = () => {
+  //   setOpen(false);
+  // };
 
   useEffect(() => {
     function stopGame() {
       console.log('конец игры');
-      setOpen(true);
+      // setOpen(true);
       if (playerOneScore > playerTwoScore) {
         setRoundResult('Congratulation!');
         setEndGameMsg('Winner of the game ' + playerOneName);
@@ -61,12 +57,15 @@ export default function Game({ count = 0, result = '' }: GameProps) {
       if (playerOneScore < playerTwoScore) {
         setRoundResult('Sorry =(');
         setEndGameMsg('Winner of the game ' + playerTwoName);
+
         // alert('Компьютер победил тебя, ха-ха-ха!');
       } else if (playerOneScore === playerTwoScore) {
         setRoundResult('Draw');
         setEndGameMsg('There are no winners today, but no losers');
         // alert('Сегодня нет победителей, но нет и побеждённых');
       }
+      setMyModalClass('md-show');
+      // document.addEventListener('click', () => closeModal());
       resetGame();
     }
     if (roundCount >= 3) {
@@ -135,27 +134,31 @@ export default function Game({ count = 0, result = '' }: GameProps) {
     return;
   }
 
+  function closeModal() {
+    setMyModalClass('');
+    // console.log('click');
+    // document.removeEventListener('click', () => closeModal());
+  }
+
   return (
     <main>
-      <Dialog
-        open={open}
-        onClose={handleClose}
-        aria-labelledby='alert-dialog-title'
-        aria-describedby='alert-dialog-description'
-      >
-        <Button onClick={handleClose} color='primary'>
-          <CloseIcon />
-        </Button>
-        <DialogTitle className='dialogTitle' id='alert-dialog-title'>
-          {roundResult}
-        </DialogTitle>
-        <DialogContent>
-          <DialogContentText className='dialogContent' id='alert-dialog-description'>
-            {endGameMsg}
-          </DialogContentText>
-        </DialogContent>
-      </Dialog>
-      
+      <div className={'md-modal md-effect-1 ' + myModalClass} id='modal-1'>
+        <div className='md-content'>
+          <h3 className='modal__title'>{roundResult}</h3>
+          <div>
+            <p className='modal__content'>{endGameMsg}</p>
+
+            <Button className='btn md-close' variant='contained' color='primary' id='md-close' onClick={() => closeModal()}>
+            Close me!
+            </Button>
+
+            {/* <button className='md-close' id='md-close' onClick={() => closeModal()}>
+              Close me!
+            </button> */}
+          </div>
+        </div>
+      </div>
+
       <div className='battlefield'>
         <div className='weapon rock' onClick={() => checkRound(Weapons.Rock)}></div>
         <div className='weapon scissors' onClick={() => checkRound(Weapons.Scissors)}></div>

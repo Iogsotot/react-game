@@ -1,3 +1,8 @@
+// https://material-ui.com/ru/customization/color/
+$darkest: #004d40;
+$dark: #009688;
+$primary:#b2dfdb;
+
 * {
   margin: 0;
   padding: 0;
@@ -16,7 +21,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-size: 1.4rem;
 
-  background-color: #b2ebe0;
+  // background-color: #b2ebe0;
+  background-color: $primary;
 }
 
 
@@ -24,24 +30,26 @@ body {
   height: 8rem;
   padding: 0.7rem;
   width: 100%;
-  background-color: #b2ebe0;
+  // background-color: #b2ebe0;
+  // background-color: #90c9bf;
+  background-color: $primary;
   text-align: center;
 }
 
 .App__header {
   .btn {
-    // padding: 0.4rem 0.6rem;
     margin: 0.8rem;
     font-size: 1.4rem;
     background-color: #004d40;
     &:hover {
-      background-color: #009688;
+      background-color: $dark;
     }
   }
 }
 
 .App__footer {
-  background-color: #548a80;
+  // background-color: #548a80;
+  background-color: $dark;
   .wrapper {
     width: 100%;
   }
