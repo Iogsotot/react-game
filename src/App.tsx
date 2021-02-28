@@ -1,9 +1,10 @@
-import React from 'react';
+// import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.scss';
 import Game from './components/Game/Game';
 import githubLogo from './assets/github-logo.svg';
-import RSSLogo from './assets/rs_school_js.svg';
-import youtubeLogo from './assets/youtube.svg';
+import RSSLogo from './assets/rs_school_react.png';
+import youtubeLogo from './assets/youtube.png';
 
 import Setting from './components/Modals/Setting';
 import Help from './components/Modals/Help';
@@ -11,16 +12,25 @@ import Score from './components/Modals/Score';
 import Sounds from './components/Modals/Sounds';
 
 function App() {
+  const [count, setCount] = useState(0);
+  const [result, setResult] = useState('');
+
+  // hello reviewer. Here I am asking React to re-render my component again.
+  const [gameId, setGameId] = useState(1);
+  const resetGame = () => setGameId((gameId) => gameId + 1);
+
   return (
     <div className='App'>
       <header className='App__header'>
         <Setting />
         <Score />
-        <button className='btn'>New game</button>
+        <button className='btn' onClick={() => resetGame()}>
+          New game
+        </button>
         <Help />
         <Sounds />
       </header>
-      <Game />
+      <Game count={count} result={result} key={gameId} />
       <footer className='App__footer'>
         <div className='wrapper'>
           <div className='copyright'>
@@ -32,7 +42,9 @@ function App() {
             </div>
             <div className='RSS'>
               <img src={RSSLogo} className='icon' alt='RSSchool' />
-              <a href='https://rs.school/js/' className='link'> </a>
+              <a href='https://rs.school/react/' className='link'>
+                {' '}
+              </a>
             </div>
             <div className='youtube'>
               <img src={youtubeLogo} className='icon' alt='youtube link' />

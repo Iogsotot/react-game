@@ -1,3 +1,4 @@
-export interface CounterProps {
-  roundCount: number;
+export interface GameProps {
+  count: number;
+  result: string;
 }
