@@ -42,6 +42,9 @@ body {
 
 .App__footer {
   background-color: #548a80;
+  .wrapper {
+    width: 100%;
+  }
 
   .copyright {
     display: flex;

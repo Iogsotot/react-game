@@ -129,7 +129,7 @@ export default function Game({count = 0, result = ''}: GameProps) {
         </h2>
 
         <div className='round-stats'>
-          <h3 className='round-header round'>{roundCount} round:</h3>
+          <h3 className='round-header round'>{roundCount} round:<div className="strip"></div></h3>
           <p className='player1-result-round'>{playerOneResult ? playerOneResult : ' '}</p>
           <p className='player2-result-round'>{playerTwoResult ? playerTwoResult : ' '}</p>
         </div>

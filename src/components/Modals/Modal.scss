@@ -10,6 +10,17 @@
 
   padding-top: 5rem;
   background: rgba(0, 0, 0, 0.7);
+
+  z-index: 10;
+}
+
+.dialogTitle > h2 {
+  font-size: 2rem;
+}
+
+.dialogContent {
+  font-size: 1.6rem !important;
+  // color: red !important;
 }
 
 .modal__body {

@@ -2,8 +2,10 @@
   display: grid;
   grid-gap: 0;
   grid-template-columns: minmax(max-content, 250px) minmax(max-content, 250px);
+  width: 100%;
   grid-template-rows: repeat(2, auto);
   justify-items: center;
+  justify-content: center;
 
   // background: linear-gradient(0.25turn, #59d2e7, #f8faf7, #f6673c);
 
@@ -13,6 +15,7 @@
 
     display: grid;
     grid-template-columns: minmax(max-content, 250px) minmax(max-content, 250px);
+    width: 100%;
     grid-template-rows: 2.8rem 3rem;
   }
 
@@ -27,7 +30,6 @@
     // width: fill-available;  // react warning
 
     text-align: center;
-    background-color: rgba(0, 0, 0, 0.089);
   }
 
   h2,
@@ -38,8 +40,19 @@
   }
 
   .round-header {
+    position: relative;
     font-size: 1.4rem;
     font-weight: 500;
+
+    .strip {
+      position: absolute;
+      height: 2.8rem;
+      top: 0;
+      left: 50%;
+      width: 100vw;
+      transform: translateX(-50%);
+      background-color: rgba(0, 0, 0, 0.089);
+    }
   }
 
   p {
