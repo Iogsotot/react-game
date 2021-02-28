@@ -13,6 +13,8 @@ import Help from './components/Modals/Help';
 import Score from './components/Modals/Score';
 import Sounds from './components/Modals/Sounds';
 
+import useFullscreenStatus from './components/utils/useFullscreenStatus';
+
 function App() {
   const [count, setCount] = useState(0);
   const [result, setResult] = useState('');
@@ -20,6 +22,22 @@ function App() {
   // hello reviewer. Here I am asking React to re-render my component again.
   const [gameId, setGameId] = useState(1);
   const resetGame = () => setGameId((gameId) => gameId + 1);
+
+  const maximizableElement = React.useRef(null);
+  let isFullscreen, setIsFullscreen: boolean;
+  let errorMessage;
+
+  try {
+    //@ts-ignore
+    [isFullscreen, setIsFullscreen] = useFullscreenStatus(maximizableElement);
+  } catch (e) {
+    errorMessage = 'Fullscreen not supported';
+    isFullscreen = false;
+    //@ts-ignore
+    setIsFullscreen = undefined;
+  }
+
+  const handleExitFullscreen = () => document.exitFullscreen();
 
   return (
     <div className='App'>
@@ -32,7 +50,33 @@ function App() {
         <Help />
         <Sounds />
       </header>
-      <Game count={count} result={result} key={gameId} />
+      <div
+        ref={maximizableElement}
+        className={`maximizable-container ${isFullscreen ? 'fullscreen' : 'default'}`}
+        // style={{ backgroundColor: isFullscreen ? backgroundColor : null }}
+      >
+        <div className='maximizable-content'>
+          <Game count={count} result={result} key={gameId} />
+        </div>
+        <div className='maximizable-actions'>
+          {errorMessage ? (
+            <button onClick={() => alert('Fullscreen is unsupported by this browser, please try another browser.')}>
+              {errorMessage}
+            </button>
+          ) : isFullscreen ? (
+            <Button className='btn--fullScreen btn' variant='contained' color='primary' onClick={handleExitFullscreen}>
+              Exit Fullscreen
+            </Button>
+          ) : (
+            //@ts-ignore
+            <Button onClick={setIsFullscreen} className='btn--fullScreen btn' variant='contained' color='primary'>
+              Fullscreen
+            </Button>
+          )}
+        </div>
+      </div>
+
+
       <footer className='App__footer'>
         <div className='wrapper'>
           <div className='copyright'>
