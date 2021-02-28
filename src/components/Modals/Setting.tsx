@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Button from '@material-ui/core/Button';
 import './Modal.scss';
 import './Setting.scss';
 
@@ -7,9 +8,9 @@ export default function Setting() {
 
   return (
     <React.Fragment>
-      <button className='btn' onClick={() => setIsOpen(true)}>
-        Setting
-      </button>
+      <Button className='btn' variant='contained' color='primary' onClick={() => setIsOpen(true)}>
+        <span className='material-icons'>settings</span>
+      </Button>
       {isOpen && (
         <div className='modal'>
           <div className='modal__body'>

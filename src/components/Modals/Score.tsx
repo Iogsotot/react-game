@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import './Modal.scss';
 import './Score.scss';
+import Button from '@material-ui/core/Button';
 
 export default function Score() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <React.Fragment>
-      <button className='btn' onClick={() => setIsOpen(true)}>
-        Score
-      </button>
+      <Button className='btn' variant='contained' color='primary' onClick={() => setIsOpen(true)}>
+        <span className='material-icons'>star_rate</span>
+      </Button>
       {isOpen && (
         <div className='modal'>
           <div className='modal__body'>

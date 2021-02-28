@@ -1,26 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Modal.scss';
 import './Help.scss';
+import Button from '@material-ui/core/Button';
 
-export default class Help extends React.Component {
-  state = {
-    isOpen: false,
-  };
+export default function Help() {
+  const [isOpen, setIsOpen] = useState(false);
 
-  render() {
-    return (
-      <React.Fragment>
-        <button className='btn' onClick={() => this.setState({ isOpen: true })}>I can't understand</button>
-        {this.state.isOpen && (
-          <div className='modal'>
-            <div className='modal__body'>
-              <h1>How to play</h1>
-              <p>Just click on all icons! do smt!</p>
-              <button onClick={() => this.setState({ isOpen: false })}>Close modal</button>
-            </div>
+  return (
+    <React.Fragment>
+      <Button className='btn' variant='contained' color='primary' onClick={() => setIsOpen(true)}>
+        <span className='material-icons'>school</span>
+      </Button>
+      {isOpen && (
+        <div className='modal'>
+          <div className='modal__body'>
+            <h1>How to play</h1>
+            <p>Just click on all icons! do smt!</p>
+            <button onClick={() => setIsOpen(false)}>Close modal</button>
           </div>
-        )}
-      </React.Fragment>
-    );
-  }
+        </div>
+      )}
+    </React.Fragment>
+  );
 }

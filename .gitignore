@@ -4,7 +4,7 @@
 /node_modules
 /.pnp
 .pnp.js
-other
+
 
 # testing
 /coverage
@@ -22,3 +22,9 @@ other
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+
+# other 
+other
+/other
+*/other

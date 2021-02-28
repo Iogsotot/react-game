@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Button from '@material-ui/core/Button';
 import './Modal.scss';
 import './Sounds.scss';
 import soundOn from '../../assets/icons/sound--on.png';
@@ -9,9 +10,9 @@ export default function Sounds() {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <React.Fragment>
-      <button className='btn' onClick={() => setIsOpen(true)}>
-        Sound
-      </button>
+      <Button className='btn' variant='contained' color='primary' onClick={() => setIsOpen(true)}>
+        <span className='material-icons'>music_note</span>
+      </Button>
       {isOpen && (
         <div className='modal'>
           <div className='modal__body'>

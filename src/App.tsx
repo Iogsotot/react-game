@@ -1,11 +1,13 @@
 // import React from 'react';
 import React, { useState, useEffect } from 'react';
 import './App.scss';
-import Game from './components/Game/Game';
+import Button from '@material-ui/core/Button';
+
 import githubLogo from './assets/github-logo.svg';
 import RSSLogo from './assets/rs_school_react.png';
 import youtubeLogo from './assets/youtube.png';
 
+import Game from './components/Game/Game';
 import Setting from './components/Modals/Setting';
 import Help from './components/Modals/Help';
 import Score from './components/Modals/Score';
@@ -24,9 +26,9 @@ function App() {
       <header className='App__header'>
         <Setting />
         <Score />
-        <button className='btn' onClick={() => resetGame()}>
+        <Button className='btn' variant='contained' color='primary' onClick={() => resetGame()}>
           New game
-        </button>
+        </Button>
         <Help />
         <Sounds />
       </header>
