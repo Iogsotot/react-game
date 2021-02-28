@@ -15,6 +15,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 1.4rem;
+
+  background-color: #90c9bf;
 }
 
 
@@ -22,7 +24,7 @@ body {
   height: 8rem;
   padding: 0.7rem;
   width: 100%;
-  background-color: rgba(127, 255, 212, 0.644);
+  background-color: #90c9bf;
   text-align: center;
 }
 
@@ -34,16 +36,14 @@ body {
 }
 
 .App__footer {
-  background-color: rgba(248, 189, 112, 0.753);
-  // background-color: rgba(0, 0, 0, 0.7);
-  // height: 8rem;
-  // padding: 0.7rem;
+  background-color: #548a80;
+
   .copyright {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
 
-    .author, .RSS {
+    .author, .RSS, .youtube {
       height: 7rem;
       padding: 0.5rem;
       text-align: center;
@@ -60,11 +60,12 @@ body {
       display: flex;
       & > .icon {
         margin: auto 0;
+        height: 5rem;
       }
     }
     .link {
       display: block;
-      color: rgb(151, 73, 0);
+      color: white;
       text-decoration: none;
     }
     .icon {

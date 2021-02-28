@@ -7,20 +7,16 @@
 
   // background: linear-gradient(0.25turn, #59d2e7, #f8faf7, #f6673c);
 
-  .round-stats,
-  .round-2-stats,
-  .round-3-stats {
+  .round-stats {
     grid-column-start: 1;
     grid-column-end: 3;
 
     display: grid;
     grid-template-columns: minmax(max-content, 250px) minmax(max-content, 250px);
-    grid-template-rows: repeat(3, auto);
+    grid-template-rows: 2.8rem 3rem;
   }
 
-  .round,
-  .round-2,
-  .round-3 {
+  .round {
     display: block;
     grid-column-start: 1;
     grid-column-end: 3;
@@ -34,20 +30,16 @@
     background-color: rgba(0, 0, 0, 0.089);
   }
 
-  // h2 {
-  //   // text-transform: capitalize;
-  // }
-
   h2,
   h3 {
     color: rgb(83, 83, 83);
     margin: 0 auto;
-    padding: 3px 15px;
+    padding: 3px 1.5rem;
   }
 
-  h3 {
-    font-size: 14px;
-    font-weight: lighter;
+  .round-header {
+    font-size: 1.4rem;
+    font-weight: 500;
   }
 
   p {
@@ -67,23 +59,13 @@
   height: 20rem;
   width: 20rem;
   margin: auto;
-  // padding: 3rem;
 
   // animation: 7s infinite spin linear;
 
-  // position: relative;
-  // width: 100%;
-  // padding-top: 100%;
-
   .weapon {
     display: block;
-    // height: 7rem;
-    // width: 7rem;
-    // margin: auto;
     background-repeat: no-repeat;
     background-position: center;
-
-    
   }
   .rock {
     background-image: url("../../assets/rock.svg");
@@ -102,6 +84,10 @@
   // .centre {
   //   grid-row: 2/3;
   //   grid-column: 2/3;
+  // }
+
+  // .round-stats {
+
   // }
 }
 
