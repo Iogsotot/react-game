@@ -1,0 +1,16 @@
+.score {
+  .modal__body {
+    grid-template-areas:
+      "title title title"
+      "input input input"
+      "skin skin skin"
+      "lang lang lang"
+      "mode mode mode"
+      ". close-btn . ";
+  }
+
+  h1 {
+    text-transform: capitalize;
+    grid-area: title;
+  }
+}

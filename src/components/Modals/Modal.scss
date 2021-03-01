@@ -35,8 +35,8 @@ $lightest: #e1f5fe;
   grid-template-rows: 2.5fr 6rem 2fr 2fr 2fr 3fr;
   grid-template-columns: 2fr 1fr 2fr;
 
-  width: 60vw;
-  height: 75vh;
+  width: 30rem;
+  height: 38rem;
 
   padding: 0rem;
 
@@ -136,6 +136,7 @@ $lightest: #e1f5fe;
     // flex-direction: column;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    width: inherit;
   }
 
   .game-skin {

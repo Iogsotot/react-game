@@ -1,0 +1,26 @@
+.help {
+  .modal__body {
+    grid-template-areas:
+      "title title title"
+      "text text text"
+      "text text text"
+      "text text text"
+      "text text text"
+      ". close-btn . ";
+  }
+
+  h1 {
+    // text-transform: capitalize;
+    grid-area: title;
+  }
+  .text {
+    max-height: 40vh;
+    padding: 1rem;
+    margin-bottom: 4rem;
+    margin-top: 4rem;
+
+    grid-area: text;
+    text-align: justify;
+    overflow-y: scroll;
+  }
+}

@@ -1,7 +1,7 @@
 // https://material-ui.com/ru/customization/color/
 $darkest: #004d40;
 $dark: #009688;
-$primary:#b2dfdb;
+$primary: #b2dfdb;
 
 * {
   margin: 0;
@@ -14,19 +14,15 @@ html {
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 1.4rem;
-
-  // background-color: #b2ebe0;
   background-color: $primary;
 }
 
-
-.App__header, .App__footer {
+.App__header,
+.App__footer {
   height: 8rem;
   padding: 0.7rem;
   width: 100%;
@@ -34,6 +30,7 @@ body {
   // background-color: #90c9bf;
   background-color: $primary;
   text-align: center;
+  // text-transform: uppercase;
 }
 
 .App__header {
@@ -59,7 +56,9 @@ body {
     flex-direction: row;
     justify-content: space-evenly;
 
-    .author, .RSS, .youtube {
+    .author,
+    .RSS,
+    .youtube {
       height: 7rem;
       padding: 0.5rem;
       text-align: center;
