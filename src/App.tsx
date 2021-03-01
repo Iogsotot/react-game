@@ -72,7 +72,7 @@ function App() {
           {layouts[lang].newGame}
         </Button>
         <Help lang={lang}/>
-        <Sounds />
+        <Sounds lang={lang}/>
       </header>
       <div
         ref={maximizableElement}

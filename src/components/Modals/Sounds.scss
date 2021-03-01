@@ -1,0 +1,58 @@
+.sound {
+  .modal__body {
+    grid-template-areas:
+      "title title title"
+      "soundOn . soundOff"
+      "soundOn . soundOff"
+      "level level level"
+      "level level level"
+      "close-btn close-btn close-btn ";
+  }
+
+  .title {
+    grid-area: title;
+  }
+
+  .soundIcon--on {
+    grid-area: soundOn;
+  }
+  .soundIcon--off {
+    grid-area: soundOff;
+  }
+
+  .sound__settings {
+    grid-area: level;
+    display: flex;
+    flex-direction: row;
+    div {
+      margin: 1rem;
+      border: 1px solid;
+    }
+  }
+
+  .btn--sound {
+    &:nth-of-type(1) {
+      background-color: #90a4ae;
+      &:hover {
+        background-color: #cfd8dc;
+        color: black;
+      }
+    }
+    &:nth-of-type(2) {
+      background-color: #00bcd4;
+      &:hover {
+        background-color: #b2ebf2;
+        color: black;
+      }
+    }
+    &:nth-of-type(3) {
+      background-color: #29b6f6;
+      &:hover {
+        background-color: #b3e5fc;
+        color: black;
+      }
+    }
+
+  }
+
+}

@@ -36,3 +36,7 @@ export interface ScoreProps {
 export interface HelpProps {
   lang: string,
 }
+
+export interface ScoreProps {
+  lang: string,
+}
