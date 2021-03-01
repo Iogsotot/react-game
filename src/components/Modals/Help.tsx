@@ -16,7 +16,7 @@ export default function Help() {
           <div className='modal__body'>
             <h1>How to play</h1>
             <p>Just click on all icons! do smt!</p>
-            <button onClick={() => setIsOpen(false)}>Close modal</button>
+            <button onClick={() => setIsOpen(false)}>Close</button>
           </div>
         </div>
       )}

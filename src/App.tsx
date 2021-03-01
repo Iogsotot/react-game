@@ -39,10 +39,30 @@ function App() {
 
   const handleExitFullscreen = () => document.exitFullscreen();
 
+  // lift state up
+  const [name, setName] = useState(null);
+  const playerOneName = name !== null ? name : 'Player 1';
+
+  const [skin, setSkin] = useState('round');
+  const gameSkin = skin;
+
+  const [lang, setLang] = useState('en');
+
+  const [mode, setMode] = useState('normal');
+
   return (
     <div className='App'>
       <header className='App__header'>
-        <Setting />
+        <Setting
+          onNameChange={setName}
+          playerName={playerOneName}
+          onSkinChange={setSkin}
+          gameSkin={gameSkin}
+          onLangChange={setLang}
+          gameLang={lang}
+          onModeChange={setMode}
+          gameMode={mode}
+        />
         <Score />
         <Button className='btn' variant='contained' color='primary' onClick={() => resetGame()}>
           New game
@@ -56,7 +76,7 @@ function App() {
         // style={{ backgroundColor: isFullscreen ? backgroundColor : null }}
       >
         <div className='maximizable-content'>
-          <Game count={count} result={result} key={gameId} />
+          <Game count={count} result={result} playerOneName={playerOneName} key={gameId} />
         </div>
         <div className='maximizable-actions'>
           {errorMessage ? (
@@ -75,7 +95,6 @@ function App() {
           )}
         </div>
       </div>
-
 
       <footer className='App__footer'>
         <div className='wrapper'>

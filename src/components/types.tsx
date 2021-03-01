@@ -1,6 +1,7 @@
 export interface GameProps {
   count: number;
   result: string;
+  playerOneName: string | null;
 }
 
 // export interface ModalProps {

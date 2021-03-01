@@ -5,7 +5,7 @@ import './Game.scss';
 import { GameProps } from '../types';
 import { Weapons } from '../constants';
 
-export default function Game({ count = 0, result = '' }: GameProps) {
+export default function Game({ count = 0, result = '', playerOneName }: GameProps) {
   const [roundCount, setRoundCount] = useState(count);
   const [playerOneResult, setPlayerOneResult] = useState(result);
   const [playerTwoResult, setPlayerTwoResult] = useState(result);
@@ -16,7 +16,7 @@ export default function Game({ count = 0, result = '' }: GameProps) {
   const [myModalClass, setMyModalClass] = useState('');
 
   let totalGames: number = 3;
-  let playerOneName: string = 'Player 1';
+  // let playerOneName: string = 'Player 1';
   let playerTwoName: string = 'Computer';
 
   function getRandomAnswer(min: number, max: number) {
