@@ -13,6 +13,8 @@ import Help from './components/Modals/Help';
 import Score from './components/Modals/Score';
 import Sounds from './components/Modals/Sounds';
 
+import layouts from './components/layouts/layouts';
+
 import useFullscreenStatus from './components/utils/useFullscreenStatus';
 
 function App() {
@@ -40,13 +42,15 @@ function App() {
   const handleExitFullscreen = () => document.exitFullscreen();
 
   // lift state up
-  const [name, setName] = useState(null);
-  const playerOneName = name !== null ? name : 'Player 1';
+  const [lang, setLang] = useState('en');
+  console.log(layouts[lang].nameDefaulft);
 
+  const [name, setName] = useState(null);
+  const playerOneName = name !== null ? name : layouts[lang].nameDefaulft;
+  
   const [skin, setSkin] = useState('round');
   const gameSkin = skin;
-
-  const [lang, setLang] = useState('en');
+  
 
   const [mode, setMode] = useState('normal');
 
@@ -65,7 +69,7 @@ function App() {
         />
         <Score />
         <Button className='btn' variant='contained' color='primary' onClick={() => resetGame()}>
-          New game
+          {layouts[lang].newGame}
         </Button>
         <Help />
         <Sounds />
@@ -76,7 +80,7 @@ function App() {
         // style={{ backgroundColor: isFullscreen ? backgroundColor : null }}
       >
         <div className='maximizable-content'>
-          <Game count={count} result={result} playerOneName={playerOneName} key={gameId} />
+          <Game count={count} result={result} playerOneName={playerOneName} key={gameId} lang={lang} />
         </div>
         <div className='maximizable-actions'>
           {errorMessage ? (
@@ -85,12 +89,12 @@ function App() {
             </button>
           ) : isFullscreen ? (
             <Button className='btn--fullScreen btn' variant='contained' color='primary' onClick={handleExitFullscreen}>
-              Exit Fullscreen
+              {layouts[lang].exitFullscreen}
             </Button>
           ) : (
             //@ts-ignore
             <Button onClick={setIsFullscreen} className='btn--fullScreen btn' variant='contained' color='primary'>
-              Fullscreen
+              {layouts[lang].fullscreen}
             </Button>
           )}
         </div>

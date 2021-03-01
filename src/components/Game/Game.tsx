@@ -4,8 +4,9 @@ import './Game.scss';
 // import '../Modals/Modal.scss';
 import { GameProps } from '../types';
 import { Weapons } from '../constants';
+import layouts from '../layouts/layouts';
 
-export default function Game({ count = 0, result = '', playerOneName }: GameProps) {
+export default function Game({ count = 0, result = '', playerOneName, lang }: GameProps) {
   const [roundCount, setRoundCount] = useState(count);
   const [playerOneResult, setPlayerOneResult] = useState(result);
   const [playerTwoResult, setPlayerTwoResult] = useState(result);
@@ -16,8 +17,8 @@ export default function Game({ count = 0, result = '', playerOneName }: GameProp
   const [myModalClass, setMyModalClass] = useState('');
 
   let totalGames: number = 3;
-  // let playerOneName: string = 'Player 1';
-  let playerTwoName: string = 'Computer';
+  console.log(lang);
+  let playerTwoName: string = layouts[lang].enemyName;
 
   function getRandomAnswer(min: number, max: number) {
     min = Math.ceil(min);
@@ -167,17 +168,17 @@ export default function Game({ count = 0, result = '', playerOneName }: GameProp
       </div>
       <div className='stats-string'>
         <h2 className='player1-result-header'>
-          {playerOneName} {'score '}
+          {playerOneName} {layouts[lang].score + ' '}
           {playerOneScore} / {totalGames}
         </h2>
         <h2 className='player2-result-header'>
-          {playerTwoName} {'score '}
+          {playerTwoName} {layouts[lang].score + ' '}
           {playerTwoScore} / {totalGames}
         </h2>
 
         <div className='round-stats'>
           <h3 className='round-header round'>
-            {roundCount} round:<div className='strip'></div>
+            {roundCount} {layouts[lang].round}:<div className='strip'></div>
           </h3>
           <p className='player1-result-round'>{playerOneResult ? playerOneResult : ' '}</p>
           <p className='player2-result-round'>{playerTwoResult ? playerTwoResult : ' '}</p>

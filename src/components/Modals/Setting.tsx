@@ -2,9 +2,19 @@ import React, { useState } from 'react';
 import Button from '@material-ui/core/Button';
 import './Modal.scss';
 import './Setting.scss';
+import layouts from '../layouts/layouts';
+import { SettingProps } from '../types';
 
-//@ts-ignore
-export default function Setting({ playerName, onNameChange, onSkinChange, gameSkin, onLangChange, gameLang, onModeChange, gameMode }) {
+export default function Setting({
+  playerName,
+  onNameChange,
+  onSkinChange,
+  gameSkin,
+  onLangChange,
+  gameLang,
+  onModeChange,
+  gameMode,
+}: SettingProps) {
   const [isOpen, setIsOpen] = useState(false);
   // const [inputValue, setInputValue] = useState('Player 1');
 
@@ -32,14 +42,14 @@ export default function Setting({ playerName, onNameChange, onSkinChange, gameSk
       {isOpen && (
         <div className='modal'>
           <div className='modal__body'>
-            <h1 className='modal__title'>Settings</h1>
+            <h1 className='modal__title'>{layouts[gameLang].settingsTitle}</h1>
             <label htmlFor='inp' className='players-name'>
               <input type='text' id='inp' placeholder='&nbsp;' value={playerName} onChange={handleChange} />
-              <span className='label'>Your name</span>
+              <span className='label'>{layouts[gameLang].inputLabel}</span>
               <span className='focus-bg'></span>
             </label>
             <div className='game-skin'>
-              <h3 className='modal__subtitle'>Select game skin:</h3>
+              <h3 className='modal__subtitle'>{layouts[gameLang].selectSkin}:</h3>
               <div className='game-skin--round-icons icon--setting' onClick={() => onSkinClick('round')}>
                 round-icons
               </div>
@@ -48,7 +58,7 @@ export default function Setting({ playerName, onNameChange, onSkinChange, gameSk
               </div>
             </div>
             <div className='game-lang'>
-              <h3 className='modal__subtitle'>Select language:</h3>
+              <h3 className='modal__subtitle'>{layouts[gameLang].selectLang}:</h3>
               <div className='game-lang--ru icon--setting' onClick={() => changeLang('ru')}>
                 ru
               </div>
@@ -57,12 +67,16 @@ export default function Setting({ playerName, onNameChange, onSkinChange, gameSk
               </div>
             </div>
             <div className='game-mode'>
-              <h3 className='modal__subtitle'>Select game mode:</h3>
-              <div className='game-mode--ru icon--setting' onClick={() => changeGameMode('normal')}>normal</div>
-              <div className='game-mode--en icon--setting' onClick={() => changeGameMode('hard')}>intersting</div>
+              <h3 className='modal__subtitle'>{layouts[gameLang].selectMode}:</h3>
+              <div className='game-mode--ru icon--setting' onClick={() => changeGameMode('normal')}>
+                normal
+              </div>
+              <div className='game-mode--en icon--setting' onClick={() => changeGameMode('hard')}>
+                intersting
+              </div>
             </div>
             <Button onClick={() => setIsOpen(false)} variant='contained' color='primary' className='btn btn--close'>
-              Close
+              {layouts[gameLang].btnClose}
             </Button>
             <Button
               onClick={() => console.log('start battle')}
@@ -70,7 +84,7 @@ export default function Setting({ playerName, onNameChange, onSkinChange, gameSk
               color='primary'
               className='btn btn--start-game'
             >
-              Start!
+              {layouts[gameLang].btnStart}
             </Button>
             {/* <button className='button start-game' type='submit'>
               Start battle!
