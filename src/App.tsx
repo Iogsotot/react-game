@@ -67,11 +67,11 @@ function App() {
           onModeChange={setMode}
           gameMode={mode}
         />
-        <Score />
+        <Score lang={lang} />
         <Button className='btn' variant='contained' color='primary' onClick={() => resetGame()}>
           {layouts[lang].newGame}
         </Button>
-        <Help />
+        <Help lang={lang}/>
         <Sounds />
       </header>
       <div

@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import './Modal.scss';
 import './Help.scss';
 import Button from '@material-ui/core/Button';
+import layouts from '../layouts/layouts';
+import { HelpProps } from '../types';
 
-export default function Help() {
+export default function Help({ lang }: HelpProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -12,11 +14,16 @@ export default function Help() {
         <span className='material-icons'>school</span>
       </Button>
       {isOpen && (
-        <div className='modal'>
+        <div className='modal help'>
           <div className='modal__body'>
-            <h1>How to play</h1>
-            <p>Just click on all icons! do smt!</p>
-            <button onClick={() => setIsOpen(false)}>Close</button>
+            <h1>{layouts[lang].help}</h1>
+            <div className='text'>
+              <p> {layouts[lang].gameInstruction}</p>
+              <p> {layouts[lang].gameInstructionExtended}</p>
+            </div>
+            <Button onClick={() => setIsOpen(false)} variant='contained' color='primary' className='btn btn--close'>
+              {layouts[lang].btnClose}
+            </Button>
           </div>
         </div>
       )}

@@ -3,18 +3,11 @@ import Button from '@material-ui/core/Button';
 // import IconButton from '@material-ui/core/IconButton';
 import './Modal.scss';
 import './Score.scss';
+import layouts from '../layouts/layouts';
+import { ScoreProps } from '../types';
 
-
-export default function Score() {
+export default function Score({ lang }: ScoreProps) {
   const [isOpen, setIsOpen] = useState(false);
-
-  // const handleClickOpen = () => {
-  //   setOpen(true);
-  // };
-
-  // const handleClose = () => {
-  //   setOpen(false);
-  // };
 
   return (
     <React.Fragment>
@@ -23,15 +16,16 @@ export default function Score() {
       </Button>
 
       {isOpen && (
-        <div className='modal'>
+        <div className='modal score'>
           <div className='modal__body'>
-            <h1>Score</h1>
+            <h1>{layouts[lang].score}</h1>
             <p>Score table</p>
-            <button onClick={() => setIsOpen(false)}>Close</button>
+            <Button onClick={() => setIsOpen(false)} variant='contained' color='primary' className='btn btn--close'>
+              {layouts[lang].btnClose}
+            </Button>
           </div>
         </div>
       )}
-
     </React.Fragment>
   );
 }

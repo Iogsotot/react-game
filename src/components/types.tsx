@@ -28,3 +28,11 @@ export interface SettingProps {
   onModeChange: any,
   gameMode: string,
 }
+
+export interface ScoreProps {
+  lang: string,
+}
+
+export interface HelpProps {
+  lang: string,
+}
