@@ -106,7 +106,7 @@ function App() {
             <div className='author'>
               <img src={githubLogo} className='icon' alt='Github' />
               <a href='https://github.com/Iogsotot' className='link'>
-                Anna Justus
+              {layouts[lang].author}
               </a>
             </div>
             <div className='RSS'>
@@ -118,7 +118,7 @@ function App() {
             <div className='youtube'>
               <img src={youtubeLogo} className='icon' alt='youtube link' />
               <a href='https://www.youtube.com/watch?v=3-Zh_DAzCi0&feature=youtu.be' className='link'>
-                game Review
+              {layouts[lang].youtube}
               </a>
             </div>
           </div>
