@@ -5,3 +5,13 @@ export enum Weapons {
   Lizard = 3,
   Spock = 4,
 }
+
+const skinsUrl = {
+  'round': {
+
+  },
+  'cats': {
+    
+  }
+
+}

@@ -84,18 +84,19 @@ $primary:#b2dfdb;
     display: block;
     background-repeat: no-repeat;
     background-position: center;
+    background-size: contain;
   }
-  .rock {
-    background-image: url("../../assets/rock.svg");
-  }
+  // .rock {
+  //   // background-image: url("../../assets/rock.svg");
+  // }
   .scissors {
-    background-image: url("../../assets/scissors.svg");
+    // background-image: url("../../assets/scissors.svg");
     background-position: bottom;
     grid-row: 3/4;
     grid-column: 2/3;
   }
   .paper {
-    background-image: url("../../assets/paper.svg");
+    // background-image: url("../../assets/paper.svg");
     grid-column: 3/4;
   }
 }

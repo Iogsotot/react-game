@@ -49,7 +49,7 @@ function App() {
   const playerOneName = name !== null ? name : layouts[lang].nameDefaulft;
   
   const [skin, setSkin] = useState('round');
-  const gameSkin = skin;
+  // const gameSkin = skin;
   
 
   const [mode, setMode] = useState('normal');
@@ -61,7 +61,7 @@ function App() {
           onNameChange={setName}
           playerName={playerOneName}
           onSkinChange={setSkin}
-          gameSkin={gameSkin}
+          gameSkin={skin}
           onLangChange={setLang}
           gameLang={lang}
           onModeChange={setMode}
@@ -80,7 +80,7 @@ function App() {
         // style={{ backgroundColor: isFullscreen ? backgroundColor : null }}
       >
         <div className='maximizable-content'>
-          <Game count={count} result={result} playerOneName={playerOneName} key={gameId} lang={lang} />
+          <Game count={count} result={result} playerOneName={playerOneName} key={gameId} lang={lang} gameSkin={skin} />
         </div>
         <div className='maximizable-actions'>
           {errorMessage ? (

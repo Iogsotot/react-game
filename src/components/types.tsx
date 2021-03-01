@@ -3,6 +3,7 @@ export interface GameProps {
   result: string;
   playerOneName: string | null;
   lang: string;
+  gameSkin: string;
 }
 
 // export interface ModalProps {

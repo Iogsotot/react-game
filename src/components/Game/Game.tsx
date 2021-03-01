@@ -6,7 +6,16 @@ import { GameProps } from '../types';
 import { Weapons } from '../constants';
 import layouts from '../layouts/layouts';
 
-export default function Game({ count = 0, result = '', playerOneName, lang }: GameProps) {
+import rockIconRound from '../../assets/rock.svg';
+import scissorsIconRound from '../../assets/scissors.svg';
+import paperIconRound from '../../assets/paper.svg';
+import lizardIconRound from '../../assets/lizard.svg';
+import spockIconRound from '../../assets/spock.svg';
+import rockIconCats from '../../assets/rock--cat.png';
+import scissorsIconCats from '../../assets/scissors--cat.png';
+import paperIconCats from '../../assets/paper--cat.png';
+
+export default function Game({ count = 0, result = '', playerOneName, lang, gameSkin }: GameProps) {
   const [roundCount, setRoundCount] = useState(count);
   const [playerOneResult, setPlayerOneResult] = useState(result);
   const [playerTwoResult, setPlayerTwoResult] = useState(result);
@@ -15,6 +24,42 @@ export default function Game({ count = 0, result = '', playerOneName, lang }: Ga
   const [roundResult, setRoundResult] = useState('');
   const [endGameMsg, setEndGameMsg] = useState('');
   const [myModalClass, setMyModalClass] = useState('');
+
+  function getSkin(skin: string) {
+    let skinIcons = {
+      rock: rockIconRound,
+      paper: paperIconRound,
+      scissors: scissorsIconRound,
+      lizard: lizardIconRound,
+      spock: spockIconRound,
+    };
+    if (skin === 'cats') {
+      skinIcons.rock = rockIconCats;
+      skinIcons.paper = paperIconCats;
+      skinIcons.scissors = scissorsIconCats;
+      skinIcons.lizard = 'null';
+      skinIcons.spock = 'null';
+    }
+    return skinIcons;
+  }
+
+  const styles = {
+    rock: {
+      backgroundImage: `url('${getSkin(gameSkin).rock}')`,
+    },
+    paper: {
+      backgroundImage: `url(${getSkin(gameSkin).paper})`,
+    },
+    scissors: {
+      backgroundImage: `url(${getSkin(gameSkin).scissors})`,
+    },
+    lizard: {
+      backgroundImage: `url(${getSkin(gameSkin).lizard})`,
+    },
+    spock: {
+      backgroundImage: `url(${getSkin(gameSkin).spock})`,
+    },
+  };
 
   let totalGames: number = 3;
   console.log(lang);
@@ -76,19 +121,19 @@ export default function Game({ count = 0, result = '', playerOneName, lang }: Ga
 
   function playerOneWin() {
     const currentRound = roundCount + 1;
-    console.log(playerOneName + ' - победитель ' + currentRound + ' раунда!');
+    // console.log(playerOneName + ' - победитель ' + currentRound + ' раунда!');
     setPlayerOneScore(playerOneScore + 1);
   }
 
   function playerOneLose() {
     const currentRound = roundCount + 1;
-    console.log(playerTwoName + ' - победитель ' + currentRound + ' раунда!');
+    // console.log(playerTwoName + ' - победитель ' + currentRound + ' раунда!');
     setPlayerTwoScore(playerTwoScore + 1);
   }
 
   function draw() {
     const currentRound = roundCount + 1;
-    console.log(currentRound + ' раунд: ничья');
+    // console.log(currentRound + ' раунд: ничья');
   }
 
   function checkRound(weapon: number): void {
@@ -149,8 +194,14 @@ export default function Game({ count = 0, result = '', playerOneName, lang }: Ga
           <div>
             <p className='modal__content'>{endGameMsg}</p>
 
-            <Button className='btn md-close' variant='contained' color='primary' id='md-close' onClick={() => closeModal()}>
-            Close me!
+            <Button
+              className='btn md-close'
+              variant='contained'
+              color='primary'
+              id='md-close'
+              onClick={() => closeModal()}
+            >
+              Close me!
             </Button>
 
             {/* <button className='md-close' id='md-close' onClick={() => closeModal()}>
@@ -161,9 +212,11 @@ export default function Game({ count = 0, result = '', playerOneName, lang }: Ga
       </div>
 
       <div className='battlefield'>
-        <div className='weapon rock' onClick={() => checkRound(Weapons.Rock)}></div>
-        <div className='weapon scissors' onClick={() => checkRound(Weapons.Scissors)}></div>
-        <div className='weapon paper' onClick={() => checkRound(Weapons.Paper)}></div>
+        <div className='weapon rock' onClick={() => checkRound(Weapons.Rock)} style={styles.rock}></div>
+        <div className='weapon scissors' onClick={() => checkRound(Weapons.Scissors)} style={styles.scissors}></div>
+        <div className='weapon paper' onClick={() => checkRound(Weapons.Paper)} style={styles.paper}></div>
+        <div className='weapon lizard hidden' onClick={() => checkRound(Weapons.Lizard)} style={styles.lizard}></div>
+        <div className='weapon spock hidden' onClick={() => checkRound(Weapons.Spock)} style={styles.spock}></div>
         {/* <div className='centre'>*</div> */}
       </div>
       <div className='stats-string'>
