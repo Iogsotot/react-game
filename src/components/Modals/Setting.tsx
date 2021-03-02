@@ -19,8 +19,10 @@ export default function Setting({
   gameLang,
   onModeChange,
   gameMode,
+  isSettingOpen,
+  setSettingOpen
 }: SettingProps) {
-  const [isOpen, setIsOpen] = useState(false);
+  // const [isOpen, setIsOpen] = useState(false);
   // const [inputValue, setInputValue] = useState('Player 1');
 
   function handleChange(e: any) {
@@ -41,10 +43,10 @@ export default function Setting({
 
   return (
     <React.Fragment>
-      <Button className='btn' variant='contained' color='primary' onClick={() => setIsOpen(true)}>
+      <Button className='btn' variant='contained' color='primary' onClick={() => setSettingOpen(true)}>
         <span className='material-icons'>settings</span>
       </Button>
-      {isOpen && (
+      {isSettingOpen && (
         <div className='modal'>
           <div className='modal__body'>
             <h1 className='modal__title'>{layouts[gameLang].settingsTitle}</h1>
@@ -98,7 +100,7 @@ export default function Setting({
                 {layouts[gameLang].gameModeIntersting}
               </div> */}
             </div>
-            <Button onClick={() => setIsOpen(false)} variant='contained' color='primary' className='btn btn--close'>
+            <Button onClick={() => setSettingOpen(false)} variant='contained' color='primary' className='btn btn--close'>
               {layouts[gameLang].btnClose}
             </Button>
             {/* <Button

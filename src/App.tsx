@@ -1,5 +1,5 @@
 // import React from 'react';
-import React, { useState } from 'react';
+import React, { SyntheticEvent, useState } from 'react';
 
 import './App.scss';
 import Button from '@material-ui/core/Button';
@@ -55,12 +55,47 @@ function App() {
 
   const [mode, setMode] = useState('normal');
 
+  const [isSettingOpen, setSettingOpen] = useState(false);
+  const [isScoreOpen, setScoreOpen] = useState(false);
+  const [isSoundsOpen, setSoundsOpen] = useState(false);
+  const [isHelpOpen, setHelpOpen] = useState(false);
 
-
+  function handleKeyPress(event: React.KeyboardEvent) {
+    switch (event.key) {
+      case '1':
+        setSettingOpen(!isSettingOpen);
+        setScoreOpen(false);
+        setSoundsOpen(false);
+        setHelpOpen(false);
+        return;
+      case '2':
+        setScoreOpen(!isScoreOpen);
+        setSoundsOpen(false);
+        setHelpOpen(false);
+        setSettingOpen(false);
+        return;
+      case '3':
+        resetGame();
+        return;
+      case '4':
+        setSoundsOpen(!isSoundsOpen);
+        setScoreOpen(false);
+        setHelpOpen(false);
+        setSettingOpen(false);
+        return;
+      case '5':
+        setHelpOpen(!isHelpOpen);
+        setScoreOpen(false);
+        setSoundsOpen(false);
+        setSettingOpen(false);
+        return;
+      default:
+        return;
+    }
+  }
 
   return (
-    <div className='App'>
-
+    <div className='App' onKeyDown={handleKeyPress} tabIndex={0}>
       <header className='App__header'>
         <Setting
           onNameChange={setName}
@@ -71,18 +106,23 @@ function App() {
           gameLang={lang}
           onModeChange={setMode}
           gameMode={mode}
+          isSettingOpen={isSettingOpen}
+          setSettingOpen={setSettingOpen}
         />
-        <Score lang={lang} />
-        <Button className='btn' variant='contained' color='primary' onClick={() => resetGame()}>
+        <Score lang={lang} isScoreOpen={isScoreOpen} setScoreOpen={setScoreOpen} />
+        <Button
+          className='btn'
+          variant='contained'
+          color='primary'
+          onClick={() => resetGame()}
+          onKeyDown={handleKeyPress}
+        >
           {layouts[lang].newGame}
         </Button>
-        <Help lang={lang} />
-        <Sounds lang={lang} />
+        <Help lang={lang} isHelpOpen={isHelpOpen} setHelpOpen={setHelpOpen} />
+        <Sounds lang={lang} isSoundsOpen={isSoundsOpen} setSoundsOpen={setSoundsOpen} />
       </header>
-      <div
-        ref={maximizableElement}
-        className={`maximizable-container ${isFullscreen ? 'fullscreen' : 'default'}`}
-      >
+      <div ref={maximizableElement} className={`maximizable-container ${isFullscreen ? 'fullscreen' : 'default'}`}>
         <div className='maximizable-content'>
           <Game count={count} result={result} playerOneName={playerOneName} key={gameId} lang={lang} gameSkin={skin} />
         </div>

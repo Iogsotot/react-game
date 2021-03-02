@@ -5,15 +5,15 @@ import Button from '@material-ui/core/Button';
 import layouts from '../layouts/layouts';
 import { HelpProps } from '../types';
 
-export default function Help({ lang }: HelpProps) {
-  const [isOpen, setIsOpen] = useState(false);
+export default function Help({ lang, isHelpOpen, setHelpOpen }: HelpProps) {
+  // const [isOpen, setIsOpen] = useState(false);
 
   return (
     <React.Fragment>
-      <Button className='btn' variant='contained' color='primary' onClick={() => setIsOpen(true)}>
+      <Button className='btn' variant='contained' color='primary' onClick={() => setHelpOpen(true)}>
         <span className='material-icons'>school</span>
       </Button>
-      {isOpen && (
+      {isHelpOpen && (
         <div className='modal help'>
           <div className='modal__body'>
             <h1>{layouts[lang].help}</h1>
@@ -21,7 +21,7 @@ export default function Help({ lang }: HelpProps) {
               <p> {layouts[lang].gameInstruction}</p>
               <p> {layouts[lang].gameInstructionExtended}</p>
             </div>
-            <Button onClick={() => setIsOpen(false)} variant='contained' color='primary' className='btn btn--close'>
+            <Button onClick={() => setHelpOpen(false)} variant='contained' color='primary' className='btn btn--close'>
               {layouts[lang].btnClose}
             </Button>
           </div>

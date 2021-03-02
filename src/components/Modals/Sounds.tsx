@@ -6,16 +6,16 @@ import layouts from '../layouts/layouts';
 import soundOn from '../../assets/icons/sound--on.png';
 import soundOff from '../../assets/icons/sound--off.png';
 // import cancel from '../../assets/icons/cancel.svg';
-import { ScoreProps } from '../types';
+import { SoundsProps } from '../types';
 
-export default function Sounds({ lang }: ScoreProps) {
-  const [isOpen, setIsOpen] = useState(false);
+export default function Sounds({ lang,  isSoundsOpen, setSoundsOpen }: SoundsProps) {
+  // const [isOpen, setIsOpen] = useState(false);
   return (
     <React.Fragment>
-      <Button className='btn' variant='contained' color='primary' onClick={() => setIsOpen(true)}>
+      <Button className='btn' variant='contained' color='primary' onClick={() => setSoundsOpen(true)}>
         <span className='material-icons'>music_note</span>
       </Button>
-      {isOpen && (
+      {isSoundsOpen && (
         <div className='modal sound'>
           <div className='modal__body'>
             {/* <img src={cancel} alt='' className='btn btn--close' onClick={() => setIsOpen(false)} /> */}
@@ -37,7 +37,7 @@ export default function Sounds({ lang }: ScoreProps) {
               <div className=''>75%</div> */}
             </div>
             {/* <div className="sound-bar">sound bar</div> */}
-            <Button onClick={() => setIsOpen(false)} variant='contained' color='primary' className='btn btn--close'>
+            <Button onClick={() => setSoundsOpen(false)} variant='contained' color='primary' className='btn btn--close'>
               {layouts[lang].btnClose}
             </Button>
           </div>

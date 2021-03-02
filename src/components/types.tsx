@@ -22,7 +22,7 @@ export interface LangMapProps {
   [key: string]: any;
 }
 
-export interface SettingProps {
+export interface SettingProps extends React.HTMLAttributes<HTMLElement> {
   playerName: string;
   onNameChange: any;
   onSkinChange: any;
@@ -32,18 +32,32 @@ export interface SettingProps {
   onModeChange: any;
   gameMode: string;
   // onClick: any;
+  isSettingOpen: boolean;
+  setSettingOpen: any;
 }
 
 export interface ScoreProps {
   lang: string;
+  isScoreOpen: boolean;
+  setScoreOpen: any;
+}
+
+export interface SoundsProps {
+  lang: string;
+  isSoundsOpen: boolean;
+  setSoundsOpen: any;
 }
 
 export interface HelpProps {
   lang: string;
+  isHelpOpen: boolean;
+  setHelpOpen: any;
 }
 
 export interface ScoreProps {
   lang: string;
+  isScoreOpen: boolean;
+  setScoreOpen: any;
 }
 
 export interface AudioProps {
