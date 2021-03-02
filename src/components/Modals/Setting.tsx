@@ -5,6 +5,11 @@ import './Setting.scss';
 import layouts from '../layouts/layouts';
 import { SettingProps } from '../types';
 
+import paw from '../../assets/icons/paw-icon.png';
+import hand from '../../assets/icons/hand-icon.png';
+import en from '../../assets/icons/en.png';
+import ru from '../../assets/icons/ru.png';
+
 export default function Setting({
   playerName,
   onNameChange,
@@ -50,42 +55,60 @@ export default function Setting({
             </label>
             <div className='game-skin'>
               <h3 className='modal__subtitle'>{layouts[gameLang].selectSkin}:</h3>
-              <div className='game-skin--round-icons icon--setting' onClick={() => onSkinClick('round')}>
-                round-icons
+              <div onClick={() => onSkinClick('round')}>
+                <img src={hand} alt='hand' className='game-skin--round-icons icon--setting' />
               </div>
-              <div className='game-skin--cats-icons icon--setting' onClick={() => onSkinClick('cats')}>
-                cats-icons
+              <div onClick={() => onSkinClick('cats')}>
+                <img src={paw} alt='paw' className='game-skin--round-icons icon--setting' />
               </div>
             </div>
             <div className='game-lang'>
               <h3 className='modal__subtitle'>{layouts[gameLang].selectLang}:</h3>
               <div className='game-lang--ru icon--setting' onClick={() => changeLang('ru')}>
-                ru
+                <img src={ru} alt='paw' className='game-skin--round-icons icon--setting' />
               </div>
               <div className='game-lang--en icon--setting' onClick={() => changeLang('en')}>
-                en
+                <img src={en} alt='paw' className='game-skin--round-icons icon--setting' />
               </div>
             </div>
             <div className='game-mode'>
               <h3 className='modal__subtitle'>{layouts[gameLang].selectMode}:</h3>
-              <div className='game-mode--ru icon--setting' onClick={() => changeGameMode('normal')}>
-                normal
-              </div>
-              <div className='game-mode--en icon--setting' onClick={() => changeGameMode('hard')}>
-                intersting
-              </div>
+
+              <Button
+                variant='contained'
+                color='secondary'
+                className='game-mode--ru icon--setting btn--game-mode'
+                onClick={() => changeGameMode('normal')}
+              >
+                {layouts[gameLang].gameModeNormal}
+              </Button>
+              {/* <div
+                className='game-mode--ru icon--setting btn--game-mode'
+                onClick={() => changeGameMode('normal')}
+              ></div> */}
+              <Button
+                variant='contained'
+                color='secondary'
+                className='game-mode--en icon--setting btn--game-mode'
+                onClick={() => changeGameMode('hard')}
+              >
+                {layouts[gameLang].gameModeIntersting}
+              </Button>
+              {/* <div className='game-mode--en icon--setting btn--game-mode' onClick={() => changeGameMode('hard')}>
+                {layouts[gameLang].gameModeIntersting}
+              </div> */}
             </div>
             <Button onClick={() => setIsOpen(false)} variant='contained' color='primary' className='btn btn--close'>
               {layouts[gameLang].btnClose}
             </Button>
-            <Button
+            {/* <Button
               onClick={() => console.log('start battle')}
               variant='contained'
               color='primary'
               className='btn btn--start-game'
             >
               {layouts[gameLang].btnStart}
-            </Button>
+            </Button> */}
             {/* <button className='button start-game' type='submit'>
               Start battle!
             </button> */}

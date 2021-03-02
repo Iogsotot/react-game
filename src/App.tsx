@@ -1,11 +1,13 @@
 // import React from 'react';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+
 import './App.scss';
 import Button from '@material-ui/core/Button';
 
 import githubLogo from './assets/github-logo.svg';
 import RSSLogo from './assets/rs_school_react.png';
 import youtubeLogo from './assets/youtube.png';
+// import theme from './assets/sounds/theme.mp3';
 
 import Game from './components/Game/Game';
 import Setting from './components/Modals/Setting';
@@ -47,15 +49,18 @@ function App() {
 
   const [name, setName] = useState(null);
   const playerOneName = name !== null ? name : layouts[lang].nameDefaulft;
-  
+
   const [skin, setSkin] = useState('round');
   // const gameSkin = skin;
-  
 
   const [mode, setMode] = useState('normal');
 
+
+
+
   return (
     <div className='App'>
+
       <header className='App__header'>
         <Setting
           onNameChange={setName}
@@ -71,13 +76,12 @@ function App() {
         <Button className='btn' variant='contained' color='primary' onClick={() => resetGame()}>
           {layouts[lang].newGame}
         </Button>
-        <Help lang={lang}/>
-        <Sounds lang={lang}/>
+        <Help lang={lang} />
+        <Sounds lang={lang} />
       </header>
       <div
         ref={maximizableElement}
         className={`maximizable-container ${isFullscreen ? 'fullscreen' : 'default'}`}
-        // style={{ backgroundColor: isFullscreen ? backgroundColor : null }}
       >
         <div className='maximizable-content'>
           <Game count={count} result={result} playerOneName={playerOneName} key={gameId} lang={lang} gameSkin={skin} />
@@ -106,7 +110,7 @@ function App() {
             <div className='author'>
               <img src={githubLogo} className='icon' alt='Github' />
               <a href='https://github.com/Iogsotot' className='link'>
-              {layouts[lang].author}
+                {layouts[lang].author}
               </a>
             </div>
             <div className='RSS'>
@@ -118,7 +122,7 @@ function App() {
             <div className='youtube'>
               <img src={youtubeLogo} className='icon' alt='youtube link' />
               <a href='https://www.youtube.com/watch?v=3-Zh_DAzCi0&feature=youtu.be' className='link'>
-              {layouts[lang].youtube}
+                {layouts[lang].youtube}
               </a>
             </div>
           </div>

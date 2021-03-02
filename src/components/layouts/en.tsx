@@ -26,7 +26,9 @@ const en = {
   winText: 'Winner of the game',
   loseTitle: 'Sorry =(',
   drawTitle: 'Draw',
-  drawText: 'There are no winners today, but no losers'
+  drawText: 'There are no winners today, but no losers',
+  gameModeNormal: 'normal',
+  gameModeIntersting: 'intresting',
 };
 
 export default en;

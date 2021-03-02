@@ -1,10 +1,26 @@
 .modal__body {
-  grid-template-areas: 
-  'title title title'
-  'input input input'
-  'skin skin skin'
-  'lang lang lang'
-  'mode mode mode'
-  'close-btn . start-btn'
-  ;
+  grid-template-areas:
+    "title title title"
+    "input input input"
+    "skin skin skin"
+    "lang lang lang"
+    "mode mode mode"
+    "close-btn close-btn close-btn";
+    // "close-btn . start-btn";
+
+  .icon--setting {
+    max-height: 5rem;
+  }
+
+  .btn--game-mode {
+    // border: 1px solid red;
+    font-size: 1.4rem;
+    background-color: rgb(219, 0, 0);
+    &:first-of-type {
+      background-color: green;
+    }
+    &:hover {
+     opacity: 0.8;
+    }
+  }
 }

@@ -26,7 +26,9 @@ const ru = {
   winText: 'Победитель игры',
   loseTitle: 'Сорян =(',
   drawTitle: 'Ничья',
-  drawText: 'Сегодня здесь нет победителей, но нет и побеждённых'
+  drawText: 'Сегодня здесь нет победителей, но нет и побеждённых',
+  gameModeNormal: 'обычный',
+  gameModeIntersting: 'интересный',
 };
 
 export default ru;

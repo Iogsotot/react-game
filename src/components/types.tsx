@@ -14,29 +14,38 @@ export interface GameProps {
 //   // myModalClassState: any;
 // }
 
+// union ??
+// interface Ilang {
+//   [key: string]: string;
+// }
 export interface LangMapProps {
   [key: string]: any;
 }
 
 export interface SettingProps {
-  playerName: string,
-  onNameChange: any,
-  onSkinChange: any,
-  gameSkin: string,
-  onLangChange: any,
-  gameLang: string,
-  onModeChange: any,
-  gameMode: string,
+  playerName: string;
+  onNameChange: any;
+  onSkinChange: any;
+  gameSkin: string;
+  onLangChange: any;
+  gameLang: string;
+  onModeChange: any;
+  gameMode: string;
+  // onClick: any;
 }
 
 export interface ScoreProps {
-  lang: string,
+  lang: string;
 }
 
 export interface HelpProps {
-  lang: string,
+  lang: string;
 }
 
 export interface ScoreProps {
-  lang: string,
+  lang: string;
+}
+
+export interface AudioProps {
+  url: string | any;
 }
