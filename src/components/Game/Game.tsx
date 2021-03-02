@@ -96,23 +96,23 @@ export default function Game({ count = 0, result = '', playerOneName, lang, game
       console.log('конец игры');
       // setOpen(true);
       if (playerOneScore > playerTwoScore) {
-        setRoundResult('Congratulation!');
-        setEndGameMsg('Winner of the game ' + playerOneName);
+        setRoundResult(layouts[lang].winTitle);
+        setEndGameMsg(layouts[lang].winText + ' ' + playerOneName);
         // alert('Победитель игры: ' + playerOneName);
       }
       if (playerOneScore < playerTwoScore) {
-        setRoundResult('Sorry =(');
-        setEndGameMsg('Winner of the game ' + playerTwoName);
+        setRoundResult(layouts[lang].loseTitle);
+        setEndGameMsg(layouts[lang].winText + ' ' + playerTwoName);
 
         // alert('Компьютер победил тебя, ха-ха-ха!');
       } else if (playerOneScore === playerTwoScore) {
-        setRoundResult('Draw');
-        setEndGameMsg('There are no winners today, but no losers');
+        setRoundResult(layouts[lang].drawTitle);
+        setEndGameMsg(layouts[lang].drawText);
         // alert('Сегодня нет победителей, но нет и побеждённых');
       }
       setMyModalClass('md-show');
       // document.addEventListener('click', () => closeModal());
-      resetGame();
+      // resetGame();
     }
     if (roundCount >= 3) {
       stopGame();
@@ -120,21 +120,21 @@ export default function Game({ count = 0, result = '', playerOneName, lang, game
   }, [playerOneName, playerOneScore, playerTwoName, playerTwoScore, roundCount]);
 
   function playerOneWin() {
-    const currentRound = roundCount + 1;
+    // const currentRound = roundCount + 1;
     // console.log(playerOneName + ' - победитель ' + currentRound + ' раунда!');
     setPlayerOneScore(playerOneScore + 1);
   }
 
   function playerOneLose() {
-    const currentRound = roundCount + 1;
+    // const currentRound = roundCount + 1;
     // console.log(playerTwoName + ' - победитель ' + currentRound + ' раунда!');
     setPlayerTwoScore(playerTwoScore + 1);
   }
 
-  function draw() {
-    const currentRound = roundCount + 1;
-    // console.log(currentRound + ' раунд: ничья');
-  }
+  // function draw() {
+  //   // const currentRound = roundCount + 1;
+  //   // console.log(currentRound + ' раунд: ничья');
+  // }
 
   function checkRound(weapon: number): void {
     setRoundCount(roundCount + 1);
@@ -152,7 +152,7 @@ export default function Game({ count = 0, result = '', playerOneName, lang, game
       if (playerOneChoice === Weapons.Scissors) {
         playerOneLose();
       } else if (playerOneChoice === Weapons.Rock) {
-        draw();
+        // draw();
       }
     }
 
@@ -163,7 +163,7 @@ export default function Game({ count = 0, result = '', playerOneName, lang, game
       if (playerOneChoice === Weapons.Scissors) {
         playerOneWin();
       } else if (playerOneChoice === Weapons.Paper) {
-        draw();
+        // draw();
       }
     }
 
@@ -174,7 +174,7 @@ export default function Game({ count = 0, result = '', playerOneName, lang, game
       if (playerOneChoice === Weapons.Paper) {
         playerOneLose();
       } else if (playerOneChoice === Weapons.Scissors) {
-        draw();
+        // draw();
       }
     }
     return;
@@ -182,6 +182,7 @@ export default function Game({ count = 0, result = '', playerOneName, lang, game
 
   function closeModal() {
     setMyModalClass('');
+    resetGame();
     // console.log('click');
     // document.removeEventListener('click', () => closeModal());
   }
@@ -201,12 +202,8 @@ export default function Game({ count = 0, result = '', playerOneName, lang, game
               id='md-close'
               onClick={() => closeModal()}
             >
-              Close me!
+              {layouts[lang].btnClose}
             </Button>
-
-            {/* <button className='md-close' id='md-close' onClick={() => closeModal()}>
-              Close me!
-            </button> */}
           </div>
         </div>
       </div>

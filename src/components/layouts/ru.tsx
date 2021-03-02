@@ -22,6 +22,11 @@ const ru = {
   soundTitle: 'Настройки звука',
   youtube: 'Обзор игры',
   author: 'Анна Юстус',
+  winTitle: 'Поздравляем!',
+  winText: 'Победитель игры',
+  loseTitle: 'Сорян =(',
+  drawTitle: 'Ничья',
+  drawText: 'Сегодня здесь нет победителей, но нет и побеждённых'
 };
 
 export default ru;

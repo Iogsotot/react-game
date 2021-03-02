@@ -22,6 +22,11 @@ const en = {
   soundTitle: 'Sound settings',
   youtube: 'Game review',
   author: 'Anna Justus',
+  winTitle: 'Congratulation!',
+  winText: 'Winner of the game',
+  loseTitle: 'Sorry =(',
+  drawTitle: 'Draw',
+  drawText: 'There are no winners today, but no losers'
 };
 
 export default en;
