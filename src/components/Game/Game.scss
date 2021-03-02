@@ -1,11 +1,14 @@
 $darkest: #004d40;
 $dark: #009688;
-$primary:#b2dfdb;
+$primary: #b2dfdb;
 
 .stats-string {
+  position: absolute;
+  bottom: 0;
+
   display: grid;
   grid-gap: 0;
-  grid-template-columns: minmax(max-content, 250px) minmax(max-content, 250px);
+  grid-template-columns: minmax(max-content, 25rem) minmax(max-content, 25rem);
   width: 100%;
   grid-template-rows: repeat(2, auto);
   justify-items: center;
@@ -18,7 +21,7 @@ $primary:#b2dfdb;
     grid-column-end: 3;
 
     display: grid;
-    grid-template-columns: minmax(max-content, 250px) minmax(max-content, 250px);
+    grid-template-columns: minmax(max-content, 25rem) minmax(max-content, 25rem);
     width: 100%;
     grid-template-rows: 2.8rem 3rem;
   }
@@ -74,9 +77,15 @@ $primary:#b2dfdb;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 0.1fr 1fr;
-  height: 20rem;
-  width: 20rem;
-  margin: auto;
+  // height: 20rem;
+  // width: 20rem;
+  height: 45vmin;
+  width: 45vmin;
+
+  // aspect-ratio: 1/1;
+  // height: auto;
+  // margin: 1rem auto;
+  margin: auto auto 10rem;
 
   // animation: 7s infinite spin linear;
 
@@ -131,5 +140,14 @@ $primary:#b2dfdb;
   }
   to {
     top: 100px;
+  }
+}
+
+@media (min-height: 680px) {
+  .battlefield {
+    // aspect-ratio: 1/1;
+    // height: auto;
+    // // width: auto;
+    margin: auto;
   }
 }

@@ -256,3 +256,19 @@ $lightest: #e1f5fe;
   transform: scale(1);
   opacity: 1;
 }
+
+@media (min-height: 720px) {
+  .modal {
+    padding-top: 10rem;
+  }
+  .modal__body {
+    width: 50rem;
+    // height: ;
+  }
+}
+
+@media (min-height: 768px) {
+  .modal {
+    padding-top: 10vmin;
+  }
+ }

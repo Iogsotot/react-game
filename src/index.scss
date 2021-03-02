@@ -19,6 +19,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-size: 1.4rem;
   background-color: $primary;
+
+  .material-icons {
+    font-size: 2.4rem;
+  }
 }
 
 .App__header,
@@ -86,5 +90,12 @@ body {
     .icon {
       height: 4rem;
     }
+  }
+}
+
+@media (min-height: 1200px) {
+  html {
+    font-size: 14px;
+    // color: brown;
   }
 }
