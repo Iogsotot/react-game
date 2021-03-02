@@ -6,6 +6,8 @@ import { GameProps } from '../types';
 import { Weapons } from '../constants';
 import layouts from '../layouts/layouts';
 
+import useSound from 'use-sound';
+
 import rockIconRound from '../../assets/rock.svg';
 import scissorsIconRound from '../../assets/scissors.svg';
 import paperIconRound from '../../assets/paper.svg';
@@ -15,7 +17,9 @@ import rockIconCats from '../../assets/rock--cat.png';
 import scissorsIconCats from '../../assets/scissors--cat.png';
 import paperIconCats from '../../assets/paper--cat.png';
 
-export default function Game({ count = 0, result = '', playerOneName, lang, gameSkin }: GameProps) {
+import weaponSound from './../../assets/sounds/vzz.mp3';
+
+export default function Game({ count = 0, result = '', playerOneName, lang, gameSkin, volume}: GameProps) {
   const [roundCount, setRoundCount] = useState(count);
   const [playerOneResult, setPlayerOneResult] = useState(result);
   const [playerTwoResult, setPlayerTwoResult] = useState(result);
@@ -24,6 +28,10 @@ export default function Game({ count = 0, result = '', playerOneName, lang, game
   const [roundResult, setRoundResult] = useState('');
   const [endGameMsg, setEndGameMsg] = useState('');
   const [myModalClass, setMyModalClass] = useState('');
+
+  // const [weaponSoundVolume, setWeaponSoundVolume] = useState(0.25);
+
+  const [playWeaponSound] = useSound(weaponSound, { volume: volume });
 
   function getSkin(skin: string) {
     let skinIcons = {
@@ -81,16 +89,6 @@ export default function Game({ count = 0, result = '', playerOneName, lang, game
     // document.removeEventListener('click', () => closeModal());
   }
 
-  // const [isOpen, setOpen] = React.useState(false);
-
-  // const handleClickOpen = () => {
-  //   setOpen(true);
-  // };
-
-  // const handleClose = () => {
-  //   setOpen(false);
-  // };
-
   useEffect(() => {
     function stopGame() {
       console.log('конец игры');
@@ -137,6 +135,11 @@ export default function Game({ count = 0, result = '', playerOneName, lang, game
   // }
 
   function checkRound(weapon: number): void {
+    playWeaponSound();
+
+    // изменяем громкость
+    // setWeaponSoundVolume(weaponSoundVolume + 0.1);
+
     setRoundCount(roundCount + 1);
 
     const playerOneChoice: number = weapon;

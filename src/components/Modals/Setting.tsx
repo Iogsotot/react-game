@@ -84,10 +84,6 @@ export default function Setting({
               >
                 {layouts[gameLang].gameModeNormal}
               </Button>
-              {/* <div
-                className='game-mode--ru icon--setting btn--game-mode'
-                onClick={() => changeGameMode('normal')}
-              ></div> */}
               <Button
                 variant='contained'
                 color='secondary'
@@ -96,24 +92,10 @@ export default function Setting({
               >
                 {layouts[gameLang].gameModeIntersting}
               </Button>
-              {/* <div className='game-mode--en icon--setting btn--game-mode' onClick={() => changeGameMode('hard')}>
-                {layouts[gameLang].gameModeIntersting}
-              </div> */}
             </div>
             <Button onClick={() => setSettingOpen(false)} variant='contained' color='primary' className='btn btn--close'>
               {layouts[gameLang].btnClose}
             </Button>
-            {/* <Button
-              onClick={() => console.log('start battle')}
-              variant='contained'
-              color='primary'
-              className='btn btn--start-game'
-            >
-              {layouts[gameLang].btnStart}
-            </Button> */}
-            {/* <button className='button start-game' type='submit'>
-              Start battle!
-            </button> */}
           </div>
         </div>
       )}

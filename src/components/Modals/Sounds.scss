@@ -2,11 +2,13 @@
   .modal__body {
     grid-template-areas:
       "title title title"
-      "soundOn . soundOff"
-      "soundOn . soundOff"
-      "level level level"
-      "level level level"
+      "soundOff level soundOn"
+      "soundOff level soundOn"
+      "soundOff level soundOn"
+      "soundOff level soundOn"
       "close-btn close-btn close-btn ";
+
+      width: 45rem;
   }
 
   .title {

@@ -4,6 +4,8 @@ export interface GameProps {
   playerOneName: string | null;
   lang: string;
   gameSkin: string;
+  setVolume: any;
+  volume: number;
 }
 
 // export interface ModalProps {
@@ -46,6 +48,7 @@ export interface SoundsProps {
   lang: string;
   isSoundsOpen: boolean;
   setSoundsOpen: any;
+  setSounds: any;
 }
 
 export interface HelpProps {
