@@ -146,6 +146,7 @@ export default function Game({ count = 0, result = '', playerOneName, lang, game
     // Set up the interval.
     useEffect(() => {
       function tick() {
+        //I'm very sorry about this
         //@ts-ignore
         savedCallback.current();
       }
