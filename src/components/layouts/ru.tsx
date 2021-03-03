@@ -34,6 +34,7 @@ const ru = {
   yes: 'да',
   soundSubtitle: 'звуки',
   musicSubtitle: 'музыка',
+  autoplay: 'автоигра'
 };
 
 export default ru;

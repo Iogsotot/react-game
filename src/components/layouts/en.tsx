@@ -34,6 +34,7 @@ const en = {
   yes: 'yes',
   soundSubtitle: 'sound',
   musicSubtitle: 'music',
+  autoplay: 'autoplay'
 };
 
 export default en;

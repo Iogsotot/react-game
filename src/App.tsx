@@ -138,6 +138,15 @@ function App() {
       </header>
       <div ref={maximizableElement} className={`maximizable-container ${isFullscreen ? 'fullscreen' : 'default'}`}>
         <div className='maximizable-content'>
+          <Button
+            className='btn btn--autoplay'
+            variant='contained'
+            color='primary'
+            // onClick={() => autoplay()}
+            onKeyDown={handleKeyPress}
+          >
+            {layouts[lang].autoplay}
+          </Button>
           <React.Fragment>
             {isOpenMusicModalQuestion && (
               <div className='modal modal--question'>

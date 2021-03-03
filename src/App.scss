@@ -11,7 +11,6 @@ $primary: #b2dfdb;
     outline: none;
   }
   
-
   main {
     position: relative;
     display: flex;
@@ -42,6 +41,29 @@ $primary: #b2dfdb;
     background-color: #004d40;
     &:hover {
       background-color: #009688;
+    }
+  }
+
+  .maximizable-content {
+    position: relative;
+  }
+
+  .btn--autoplay {
+    position: absolute;
+    z-index: 1;
+    right: 1rem;
+    top: 1rem;
+
+    background-color: #ff6f00;
+    color: black;
+    font-size: 1.4rem;
+
+    width: 10rem;
+    aspect-ratio: 1/1;
+    padding: 0.5rem;
+    border-radius: 50%;
+    &:hover {
+      background-color:#ffe082;
     }
   }
 }
