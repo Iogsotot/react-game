@@ -5,11 +5,10 @@ import './Sounds.scss';
 import layouts from '../layouts/layouts';
 import soundOn from '../../assets/icons/sound--on.png';
 import soundOff from '../../assets/icons/sound--off.png';
-// import cancel from '../../assets/icons/cancel.svg';
+
 import { SoundsProps } from '../types';
 
 export default function Sounds({ lang,  isSoundsOpen, setSoundsOpen, setSounds }: SoundsProps) {
-  // const [isOpen, setIsOpen] = useState(false);
   return (
     <React.Fragment>
       <Button className='btn' variant='contained' color='primary' onClick={() => setSoundsOpen(true)}>
@@ -18,7 +17,6 @@ export default function Sounds({ lang,  isSoundsOpen, setSoundsOpen, setSounds }
       {isSoundsOpen && (
         <div className='modal sound'>
           <div className='modal__body'>
-            {/* <img src={cancel} alt='' className='btn btn--close' onClick={() => setIsOpen(false)} /> */}
             <h1 className='title'> {layouts[lang].soundTitle}</h1>
             <img src={soundOff} alt='sound off' className='soundIcon--off' onClick={() => {setSounds(0)}}/>
             <img src={soundOn} alt='sound on' className='soundIcon--on' onClick={() => {setSounds(1)}}/>
