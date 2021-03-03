@@ -29,6 +29,11 @@ const ru = {
   drawText: 'Сегодня здесь нет победителей, но нет и побеждённых',
   gameModeNormal: 'обычный',
   gameModeIntersting: 'интересный',
+  musicModalTitle: 'Включить музыку на фоне?',
+  no: 'нет',
+  yes: 'да',
+  soundSubtitle: 'звуки',
+  musicSubtitle: 'музыка',
 };
 
 export default ru;

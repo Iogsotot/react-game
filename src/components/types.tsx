@@ -49,6 +49,7 @@ export interface SoundsProps {
   isSoundsOpen: boolean;
   setSoundsOpen: any;
   setSounds: any;
+  setMusic: any;
 }
 
 export interface HelpProps {

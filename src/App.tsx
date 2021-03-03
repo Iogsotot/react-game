@@ -1,5 +1,7 @@
 // import React from 'react';
-import React, { SyntheticEvent, useState } from 'react';
+import React, { useState } from 'react';
+
+import useSound from 'use-sound';
 
 import './App.scss';
 import Button from '@material-ui/core/Button';
@@ -7,7 +9,8 @@ import Button from '@material-ui/core/Button';
 import githubLogo from './assets/github-logo.svg';
 import RSSLogo from './assets/rs_school_react.png';
 import youtubeLogo from './assets/youtube.png';
-// import theme from './assets/sounds/theme.mp3';
+import themeSound from './assets/sounds/theme.mp3';
+import cancelBtn from './assets/icons/cancel.png';
 
 import Game from './components/Game/Game';
 import Setting from './components/Modals/Setting';
@@ -18,6 +21,7 @@ import Sounds from './components/Modals/Sounds';
 import layouts from './components/layouts/layouts';
 
 import useFullscreenStatus from './components/utils/useFullscreenStatus';
+// import { Modal } from '@material-ui/core';
 
 function App() {
   const [count, setCount] = useState(0);
@@ -45,21 +49,23 @@ function App() {
 
   // lift state up
   const [lang, setLang] = useState('en');
-  console.log(layouts[lang].nameDefaulft);
+  // console.log(layouts[lang].nameDefaulft);
 
+  //
   const [name, setName] = useState(null);
   const playerOneName = name !== null ? name : layouts[lang].nameDefaulft;
-
   const [skin, setSkin] = useState('round');
   // const gameSkin = skin;
-
   const [mode, setMode] = useState('normal');
-
+  const [soundVolume, setSoundVolume] = useState(0.5);
+  const [musicVolume, setMusicVolume] = useState(0.4);
+  const [isOpenMusicModalQuestion, setMusicModalQuestion] = useState(true);
   const [isSettingOpen, setSettingOpen] = useState(false);
   const [isScoreOpen, setScoreOpen] = useState(false);
   const [isSoundsOpen, setSoundsOpen] = useState(false);
   const [isHelpOpen, setHelpOpen] = useState(false);
 
+  // sorry for this - I have no time at all
   function handleKeyPress(event: React.KeyboardEvent) {
     switch (event.key) {
       case '1':
@@ -94,6 +100,8 @@ function App() {
     }
   }
 
+  const [playThemeSound] = useSound(themeSound, { volume: musicVolume });
+
   return (
     <div className='App' onKeyDown={handleKeyPress} tabIndex={0}>
       <header className='App__header'>
@@ -120,11 +128,72 @@ function App() {
           {layouts[lang].newGame}
         </Button>
         <Help lang={lang} isHelpOpen={isHelpOpen} setHelpOpen={setHelpOpen} />
-        <Sounds lang={lang} isSoundsOpen={isSoundsOpen} setSoundsOpen={setSoundsOpen} />
+        <Sounds
+          lang={lang}
+          isSoundsOpen={isSoundsOpen}
+          setSoundsOpen={setSoundsOpen}
+          setSounds={setSoundVolume}
+          setMusic={setMusicVolume}
+        />
       </header>
       <div ref={maximizableElement} className={`maximizable-container ${isFullscreen ? 'fullscreen' : 'default'}`}>
         <div className='maximizable-content'>
-          <Game count={count} result={result} playerOneName={playerOneName} key={gameId} lang={lang} gameSkin={skin} />
+          <React.Fragment>
+            {isOpenMusicModalQuestion && (
+              <div className='modal modal--question'>
+                <div className='modal__body'>
+                  <img
+                    src={cancelBtn}
+                    alt='X'
+                    onClick={() => {
+                      setMusicModalQuestion(false);
+                      playThemeSound();
+                      setMusicVolume(0);
+                    }}
+                    className='btn--cancel'
+                  />
+                  <h1 className='title'>{layouts[lang].musicModalTitle}</h1>
+                  <div className='bgt-wrapper'>
+                    <Button
+                      className='btn'
+                      variant='contained'
+                      color='primary'
+                      onClick={() => {
+                        setMusicModalQuestion(false);
+                        playThemeSound();
+                      }}
+                      onKeyDown={handleKeyPress}
+                    >
+                      {layouts[lang].yes}
+                    </Button>
+                    <Button
+                      className='btn'
+                      variant='contained'
+                      color='secondary'
+                      onClick={() => {
+                        setMusicModalQuestion(false);
+                        playThemeSound();
+                        setMusicVolume(0);
+                      }}
+                      onKeyDown={handleKeyPress}
+                    >
+                      {layouts[lang].no}
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            )}
+          </React.Fragment>
+          <Game
+            count={count}
+            result={result}
+            playerOneName={playerOneName}
+            key={gameId}
+            lang={lang}
+            gameSkin={skin}
+            volume={soundVolume}
+            setVolume={setSoundVolume}
+          />
         </div>
         <div className='maximizable-actions'>
           {errorMessage ? (

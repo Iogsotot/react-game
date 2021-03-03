@@ -29,6 +29,11 @@ const en = {
   drawText: 'There are no winners today, but no losers',
   gameModeNormal: 'normal',
   gameModeIntersting: 'intresting',
+  musicModalTitle: 'Play music in the background?',
+  no: 'no',
+  yes: 'yes',
+  soundSubtitle: 'sound',
+  musicSubtitle: 'music',
 };
 
 export default en;

@@ -17,9 +17,10 @@ import rockIconCats from '../../assets/rock--cat.png';
 import scissorsIconCats from '../../assets/scissors--cat.png';
 import paperIconCats from '../../assets/paper--cat.png';
 
-import weaponSound from './../../assets/sounds/vzz.mp3';
+import weaponSound from './../../assets/sounds/puk.mp3';
 
-export default function Game({ count = 0, result = '', playerOneName, lang, gameSkin, volume}: GameProps) {
+
+export default function Game({ count = 0, result = '', playerOneName, lang, gameSkin, volume }: GameProps) {
   const [roundCount, setRoundCount] = useState(count);
   const [playerOneResult, setPlayerOneResult] = useState(result);
   const [playerTwoResult, setPlayerTwoResult] = useState(result);
@@ -32,6 +33,7 @@ export default function Game({ count = 0, result = '', playerOneName, lang, game
   // const [weaponSoundVolume, setWeaponSoundVolume] = useState(0.25);
 
   const [playWeaponSound] = useSound(weaponSound, { volume: volume });
+  // const [playThemeSound] = useSound(themeSound, { volume: volume });
 
   function getSkin(skin: string) {
     let skinIcons = {
@@ -70,7 +72,7 @@ export default function Game({ count = 0, result = '', playerOneName, lang, game
   };
 
   let totalGames: number = 3;
-  console.log(lang);
+  // console.log(lang);
   let playerTwoName: string = layouts[lang].enemyName;
 
   function getRandomAnswer(min: number, max: number) {
@@ -189,9 +191,12 @@ export default function Game({ count = 0, result = '', playerOneName, lang, game
     // console.log('click');
     // document.removeEventListener('click', () => closeModal());
   }
+  // playThemeSound();
 
   return (
     <main>
+    
+      {/* <React.Fragment></React.Fragment> */}
       <div className={'md-modal md-effect-1 ' + myModalClass} id='modal-1'>
         <div className='md-content'>
           <h3 className='modal__title'>{roundResult}</h3>

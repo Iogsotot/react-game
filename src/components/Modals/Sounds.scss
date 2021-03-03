@@ -2,30 +2,49 @@
   .modal__body {
     grid-template-areas:
       "title title title"
-      "soundOff level soundOn"
-      "soundOff level soundOn"
-      "soundOff level soundOn"
-      "soundOff level soundOn"
+      "soundTitle soundTitle soundTitle"
+      "sSettings sSettings sSettings"
+      "musicTitle musicTitle musicTitle"
+      "mSettings mSettings mSettings"
       "close-btn close-btn close-btn ";
 
-      width: 45rem;
+    width: 45rem;
   }
 
   .title {
     grid-area: title;
   }
 
-  .soundIcon--on {
-    grid-area: soundOn;
+
+  .subtitle--music {
+    grid-area: musicTitle;
   }
-  .soundIcon--off {
-    grid-area: soundOff;
+  .music__settings {
+    grid-area: mSettings;
   }
 
+  .subtitle--sound {
+    grid-area: soundTitle;
+  }
   .sound__settings {
-    grid-area: level;
+    grid-area: sSettings;
+  }
+  .soundIcon--on, .soundIcon--off {
+    height: 5rem;
+    transition: all 250ms linear;
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.5);
+      transition: all 400ms cubic-bezier(.47,1.64,.41,.8);
+    }
+  }
+
+  .sound__settings, .music__settings {
     display: flex;
+    flex: 1;
     flex-direction: row;
+    align-items: center;
+
     div {
       margin: 1rem;
       border: 1px solid;
@@ -54,7 +73,5 @@
         color: black;
       }
     }
-
   }
-
 }
