@@ -28,7 +28,7 @@ const en = {
   drawTitle: 'Draw',
   drawText: 'There are no winners today, but no losers',
   gameModeNormal: 'normal',
-  gameModeIntersting: 'intresting',
+  gameModeIntersting: 'interesting',
   musicModalTitle: 'Play music in the background?',
   no: 'no',
   yes: 'yes',

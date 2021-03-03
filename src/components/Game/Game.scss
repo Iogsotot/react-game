@@ -76,9 +76,10 @@ $primary: #b2dfdb;
 .battlefield {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 0.1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
   // height: 20rem;
   // width: 20rem;
+  gap: 1rem;
   height: 45vmin;
   width: 45vmin;
 
@@ -94,18 +95,21 @@ $primary: #b2dfdb;
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
+    &:hover{
+      cursor: pointer;
+      transform: scale(1.2);
+    }
   }
-  // .rock {
-  //   // background-image: url("../../assets/rock.svg");
-  // }
+
   .scissors {
-    // background-image: url("../../assets/scissors.svg");
     background-position: bottom;
     grid-row: 3/4;
     grid-column: 2/3;
   }
   .paper {
-    // background-image: url("../../assets/paper.svg");
+    grid-column: 3/4;
+  }
+  .spock {
     grid-column: 3/4;
   }
 }

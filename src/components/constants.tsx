@@ -6,12 +6,12 @@ export enum Weapons {
   Spock = 4,
 }
 
-const skinsUrl = {
-  'round': {
+// const skinsUrl = {
+//   'round': {
 
-  },
-  'cats': {
+//   },
+//   'cats': {
     
-  }
+//   }
 
-}
+// }
