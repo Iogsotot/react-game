@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Button from '@material-ui/core/Button';
 import './Game.scss';
 // import '../Modals/Modal.scss';
@@ -20,6 +20,7 @@ import lizardIconCats from '../../assets/lizard--cat.png';
 import spockIconCats from '../../assets/spock--cat.png';
 
 import weaponSound from './../../assets/sounds/puk.mp3';
+import { setInterval } from 'timers';
 
 export default function Game({ count = 0, result = '', playerOneName, lang, gameSkin, volume, gameMode }: GameProps) {
   const [roundCount, setRoundCount] = useState(count);
@@ -30,6 +31,7 @@ export default function Game({ count = 0, result = '', playerOneName, lang, game
   const [roundResult, setRoundResult] = useState('');
   const [endGameMsg, setEndGameMsg] = useState('');
   const [myModalClass, setMyModalClass] = useState('');
+  const [isAutoPlay, setIsAutoPlay] = useState(false);
 
   // const [weaponSoundVolume, setWeaponSoundVolume] = useState(0.25);
 
@@ -92,29 +94,30 @@ export default function Game({ count = 0, result = '', playerOneName, lang, game
     // document.removeEventListener('click', () => closeModal());
   }
 
-  useEffect(() => {
-    function stopGame() {
-      console.log('конец игры');
-      // setOpen(true);
-      if (playerOneScore > playerTwoScore) {
-        setRoundResult(layouts[lang].winTitle);
-        setEndGameMsg(layouts[lang].winText + ' ' + playerOneName);
-        // alert('Победитель игры: ' + playerOneName);
-      }
-      if (playerOneScore < playerTwoScore) {
-        setRoundResult(layouts[lang].loseTitle);
-        setEndGameMsg(layouts[lang].winText + ' ' + playerTwoName);
-
-        // alert('Компьютер победил тебя, ха-ха-ха!');
-      } else if (playerOneScore === playerTwoScore) {
-        setRoundResult(layouts[lang].drawTitle);
-        setEndGameMsg(layouts[lang].drawText);
-        // alert('Сегодня нет победителей, но нет и побеждённых');
-      }
-      setMyModalClass('md-show');
-      // document.addEventListener('click', () => closeModal());
-      // resetGame();
+  function stopGame() {
+    console.log('конец игры');
+    // setOpen(true);
+    if (playerOneScore > playerTwoScore) {
+      setRoundResult(layouts[lang].winTitle);
+      setEndGameMsg(layouts[lang].winText + ' ' + playerOneName);
+      // alert('Победитель игры: ' + playerOneName);
     }
+    if (playerOneScore < playerTwoScore) {
+      setRoundResult(layouts[lang].loseTitle);
+      setEndGameMsg(layouts[lang].winText + ' ' + playerTwoName);
+
+      // alert('Компьютер победил тебя, ха-ха-ха!');
+    } else if (playerOneScore === playerTwoScore) {
+      setRoundResult(layouts[lang].drawTitle);
+      setEndGameMsg(layouts[lang].drawText);
+      // alert('Сегодня нет победителей, но нет и побеждённых');
+    }
+    setMyModalClass('md-show');
+    // document.addEventListener('click', () => closeModal());
+    // resetGame();
+  }
+
+  useEffect(() => {
     if (roundCount >= 3) {
       stopGame();
     }
@@ -132,12 +135,44 @@ export default function Game({ count = 0, result = '', playerOneName, lang, game
     setPlayerTwoScore(playerTwoScore + 1);
   }
 
-  // function draw() {
-  //   // const currentRound = roundCount + 1;
-  //   // console.log(currentRound + ' раунд: ничья');
-  // }
+  function useInterval(callback: any, delay: number) {
+    const savedCallback = useRef();
 
-  function checkRound(weapon: number): void {
+    // Remember the latest callback.
+    useEffect(() => {
+      savedCallback.current = callback;
+    }, [callback]);
+
+    // Set up the interval.
+    useEffect(() => {
+      function tick() {
+        //@ts-ignore
+        savedCallback.current();
+      }
+      if (delay !== null) {
+        let id = setInterval(tick, delay);
+        return () => clearInterval(id);
+      }
+    }, [delay]);
+  }
+
+  useInterval(() => {
+    if (isAutoPlay) {
+      if (roundCount >= 3) {
+        stopGame();
+        setIsAutoPlay(false);
+      } else {
+        let playerOneChoice: number = getRandomAnswer(0, 2);
+        if (gameMode === 'hard') {
+          playerOneChoice = getRandomAnswer(0, 4);
+        }
+        checkRound(playerOneChoice);
+        console.log(roundCount);
+      }
+    }
+  }, 2000);
+
+  function checkRound(weapon: number, timerId?: any): void {
     playWeaponSound();
     setRoundCount(roundCount + 1);
 
@@ -153,7 +188,7 @@ export default function Game({ count = 0, result = '', playerOneName, lang, game
     if (playerTwoChoice === Weapons.Rock) {
       if (playerOneChoice === Weapons.Paper || playerOneChoice === Weapons.Lizard) {
         playerOneWin();
-      } 
+      }
       if (playerOneChoice === Weapons.Scissors || playerOneChoice === Weapons.Spock) {
         playerOneLose();
       } else if (playerOneChoice === Weapons.Rock) {
@@ -210,14 +245,19 @@ export default function Game({ count = 0, result = '', playerOneName, lang, game
   function closeModal() {
     setMyModalClass('');
     resetGame();
-    // console.log('click');
-    // document.removeEventListener('click', () => closeModal());
   }
-  // playThemeSound();
+
 
   return (
     <main>
-      {/* <React.Fragment></React.Fragment> */}
+      <Button
+        className='btn btn--autoplay'
+        variant='contained'
+        color='primary'
+        onClick={() => setIsAutoPlay(!isAutoPlay)}
+      >
+        {layouts[lang].autoplay}
+      </Button>
       <div className={'md-modal md-effect-1 ' + myModalClass} id='modal-1'>
         <div className='md-content'>
           <h3 className='modal__title'>{roundResult}</h3>
