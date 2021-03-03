@@ -34,7 +34,8 @@ const ru = {
   yes: 'да',
   soundSubtitle: 'звуки',
   musicSubtitle: 'музыка',
-  autoplay: 'автоигра'
+  autoplay: 'автоигра',
+  hotkeys: 'Горячие клавиши: 1 - настройки; 2 - Зал славы; 3 - новая игра; 4 - помощь; 5 - настройки звука',
 };
 
 export default ru;

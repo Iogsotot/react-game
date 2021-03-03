@@ -1,16 +1,47 @@
 .score {
+  background-color: #4d250369;
   .modal__body {
+    grid-template-rows: auto;
+    grid-template-columns: auto;
     grid-template-areas:
-      "title title title"
-      "input input input"
-      "skin skin skin"
-      "lang lang lang"
-      "mode mode mode"
-      ". close-btn . ";
+      "title"
+      "table"
+      "close-btn";
+    background-color: #ffe57f;
   }
 
   h1 {
     text-transform: capitalize;
     grid-area: title;
+  }
+
+  .score__table {
+    grid-area: table;
+    width: 100%;
+    margin: auto 1rem;
+
+    list-style: none;
+    font-size: 1.6rem;
+    text-align: left;
+    .score__item {
+      display: flex;
+      justify-content: space-between;
+
+      padding: 0.5rem 1rem;
+
+      &:nth-of-type(even) {
+        background-color: #ffd740;
+      }
+      &:nth-of-type(odd) {
+        background-color: #ffc400;
+      }
+    }
+  }
+  .btn--close {
+    color: black;
+    background-color: #ff6d00;
+    &:hover {
+      background-color: #ffd180;
+    }
   }
 }

@@ -22,7 +22,7 @@ import spockIconCats from '../../assets/spock--cat.png';
 import weaponSound from './../../assets/sounds/puk.mp3';
 import { setInterval } from 'timers';
 
-export default function Game({ count = 0, result = '', playerOneName, lang, gameSkin, volume, gameMode }: GameProps) {
+export default function Game({ count = 0, result = '', playerOneName, lang, gameSkin, volume, gameMode, setGameWinner }: GameProps) {
   const [roundCount, setRoundCount] = useState(count);
   const [playerOneResult, setPlayerOneResult] = useState(result);
   const [playerTwoResult, setPlayerTwoResult] = useState(result);
@@ -33,10 +33,7 @@ export default function Game({ count = 0, result = '', playerOneName, lang, game
   const [myModalClass, setMyModalClass] = useState('');
   const [isAutoPlay, setIsAutoPlay] = useState(false);
 
-  // const [weaponSoundVolume, setWeaponSoundVolume] = useState(0.25);
-
   const [playWeaponSound] = useSound(weaponSound, { volume: volume });
-  // const [playThemeSound] = useSound(themeSound, { volume: volume });
 
   function getSkin(skin: string) {
     let skinIcons = {
@@ -75,7 +72,6 @@ export default function Game({ count = 0, result = '', playerOneName, lang, game
   };
 
   let totalGames: number = 3;
-  // console.log(lang);
   let playerTwoName: string = layouts[lang].enemyName;
 
   function getRandomAnswer(min: number, max: number) {
@@ -96,21 +92,17 @@ export default function Game({ count = 0, result = '', playerOneName, lang, game
 
   function stopGame() {
     console.log('конец игры');
-    // setOpen(true);
     if (playerOneScore > playerTwoScore) {
       setRoundResult(layouts[lang].winTitle);
       setEndGameMsg(layouts[lang].winText + ' ' + playerOneName);
-      // alert('Победитель игры: ' + playerOneName);
+      setGameWinner(playerOneName);
     }
     if (playerOneScore < playerTwoScore) {
       setRoundResult(layouts[lang].loseTitle);
       setEndGameMsg(layouts[lang].winText + ' ' + playerTwoName);
-
-      // alert('Компьютер победил тебя, ха-ха-ха!');
     } else if (playerOneScore === playerTwoScore) {
       setRoundResult(layouts[lang].drawTitle);
       setEndGameMsg(layouts[lang].drawText);
-      // alert('Сегодня нет победителей, но нет и побеждённых');
     }
     setMyModalClass('md-show');
     // document.addEventListener('click', () => closeModal());
@@ -124,14 +116,10 @@ export default function Game({ count = 0, result = '', playerOneName, lang, game
   }, [playerOneName, playerOneScore, playerTwoName, playerTwoScore, roundCount]);
 
   function playerOneWin() {
-    // const currentRound = roundCount + 1;
-    // console.log(playerOneName + ' - победитель ' + currentRound + ' раунда!');
     setPlayerOneScore(playerOneScore + 1);
   }
 
   function playerOneLose() {
-    // const currentRound = roundCount + 1;
-    // console.log(playerTwoName + ' - победитель ' + currentRound + ' раунда!');
     setPlayerTwoScore(playerTwoScore + 1);
   }
 

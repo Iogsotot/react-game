@@ -34,7 +34,8 @@ const en = {
   yes: 'yes',
   soundSubtitle: 'sound',
   musicSubtitle: 'music',
-  autoplay: 'autoplay'
+  autoplay: 'autoplay',
+  hotkeys: 'Hotkeys: 1 - settings; 2 - score; 3 - new game; 4 - help; 5 - sound settings'
 };
 
 export default en;

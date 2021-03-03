@@ -49,13 +49,9 @@ function App() {
 
   // lift state up
   const [lang, setLang] = useState('en');
-  // console.log(layouts[lang].nameDefaulft);
-
-  //
-  const [name, setName] = useState(null);
+  const [name, setName] = useState(layouts[lang].nameDefaulft);
   const playerOneName = name !== null ? name : layouts[lang].nameDefaulft;
   const [skin, setSkin] = useState('round');
-  // const gameSkin = skin;
   const [mode, setMode] = useState('normal');
   const [soundVolume, setSoundVolume] = useState(0.5);
   const [musicVolume, setMusicVolume] = useState(0.4);
@@ -64,6 +60,7 @@ function App() {
   const [isScoreOpen, setScoreOpen] = useState(false);
   const [isSoundsOpen, setSoundsOpen] = useState(false);
   const [isHelpOpen, setHelpOpen] = useState(false);
+  const [gameWinner, setGameWinner] = useState(null);
 
   // sorry for this - I have no time at all
   function handleKeyPress(event: React.KeyboardEvent) {
@@ -83,13 +80,13 @@ function App() {
       case '3':
         resetGame();
         return;
-      case '4':
+      case '5':
         setSoundsOpen(!isSoundsOpen);
         setScoreOpen(false);
         setHelpOpen(false);
         setSettingOpen(false);
         return;
-      case '5':
+      case '4':
         setHelpOpen(!isHelpOpen);
         setScoreOpen(false);
         setSoundsOpen(false);
@@ -117,7 +114,7 @@ function App() {
           isSettingOpen={isSettingOpen}
           setSettingOpen={setSettingOpen}
         />
-        <Score lang={lang} isScoreOpen={isScoreOpen} setScoreOpen={setScoreOpen} />
+        <Score lang={lang} isScoreOpen={isScoreOpen} setScoreOpen={setScoreOpen} gameWinner={gameWinner} setGameWinner={setGameWinner} />
         <Button
           className='btn'
           variant='contained'
@@ -138,15 +135,6 @@ function App() {
       </header>
       <div ref={maximizableElement} className={`maximizable-container ${isFullscreen ? 'fullscreen' : 'default'}`}>
         <div className='maximizable-content'>
-          {/* <Button
-            className='btn btn--autoplay'
-            variant='contained'
-            color='primary'
-            onClick={() => autoplay()}
-            onKeyDown={handleKeyPress}
-          >
-            {layouts[lang].autoplay}
-          </Button> */}
           <React.Fragment>
             {isOpenMusicModalQuestion && (
               <div className='modal modal--question'>
@@ -203,6 +191,7 @@ function App() {
             volume={soundVolume}
             setVolume={setSoundVolume}
             gameMode={mode}
+            setGameWinner={setGameWinner}
           />
         </div>
         <div className='maximizable-actions'>

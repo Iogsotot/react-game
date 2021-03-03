@@ -7,17 +7,10 @@ export interface GameProps {
   setVolume: any;
   volume: number;
   gameMode: string;
+  setGameWinner: any;
 }
 
-// export interface ModalProps {
-//   roundResult: string;
-//   endGameMsg: string;
-//   myModalClass: string;
-//   // setMyModalClassState: any;
-//   // myModalClassState: any;
-// }
-
-// union ??
+// ?? 
 // interface Ilang {
 //   [key: string]: string;
 // }
@@ -43,6 +36,8 @@ export interface ScoreProps {
   lang: string;
   isScoreOpen: boolean;
   setScoreOpen: any;
+  gameWinner: string | null;
+  setGameWinner: any;
 }
 
 export interface SoundsProps {

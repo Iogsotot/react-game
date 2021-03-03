@@ -20,6 +20,7 @@ export default function Help({ lang, isHelpOpen, setHelpOpen }: HelpProps) {
             <div className='text'>
               <p> {layouts[lang].gameInstruction}</p>
               <p> {layouts[lang].gameInstructionExtended}</p>
+              <p>{layouts[lang].hotkeys}</p>
             </div>
             <Button onClick={() => setHelpOpen(false)} variant='contained' color='primary' className='btn btn--close'>
               {layouts[lang].btnClose}
