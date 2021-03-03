@@ -16,11 +16,12 @@ import spockIconRound from '../../assets/spock.svg';
 import rockIconCats from '../../assets/rock--cat.png';
 import scissorsIconCats from '../../assets/scissors--cat.png';
 import paperIconCats from '../../assets/paper--cat.png';
+import lizardIconCats from '../../assets/lizard--cat.png';
+import spockIconCats from '../../assets/spock--cat.png';
 
 import weaponSound from './../../assets/sounds/puk.mp3';
 
-
-export default function Game({ count = 0, result = '', playerOneName, lang, gameSkin, volume }: GameProps) {
+export default function Game({ count = 0, result = '', playerOneName, lang, gameSkin, volume, gameMode }: GameProps) {
   const [roundCount, setRoundCount] = useState(count);
   const [playerOneResult, setPlayerOneResult] = useState(result);
   const [playerTwoResult, setPlayerTwoResult] = useState(result);
@@ -47,8 +48,8 @@ export default function Game({ count = 0, result = '', playerOneName, lang, game
       skinIcons.rock = rockIconCats;
       skinIcons.paper = paperIconCats;
       skinIcons.scissors = scissorsIconCats;
-      skinIcons.lizard = 'null';
-      skinIcons.spock = 'null';
+      skinIcons.lizard = lizardIconCats;
+      skinIcons.spock = spockIconCats;
     }
     return skinIcons;
   }
@@ -138,23 +139,22 @@ export default function Game({ count = 0, result = '', playerOneName, lang, game
 
   function checkRound(weapon: number): void {
     playWeaponSound();
-
-    // изменяем громкость
-    // setWeaponSoundVolume(weaponSoundVolume + 0.1);
-
     setRoundCount(roundCount + 1);
 
     const playerOneChoice: number = weapon;
     setPlayerOneResult(Weapons[weapon]);
     // если играем против компа, то:
-    const playerTwoChoice: number = getRandomAnswer(0, 2);
+    let playerTwoChoice: number = getRandomAnswer(0, 2);
+    if (gameMode === 'hard') {
+      playerTwoChoice = getRandomAnswer(0, 4);
+    }
     setPlayerTwoResult(Weapons[playerTwoChoice]);
 
     if (playerTwoChoice === Weapons.Rock) {
-      if (playerOneChoice === Weapons.Paper) {
+      if (playerOneChoice === Weapons.Paper || playerOneChoice === Weapons.Lizard) {
         playerOneWin();
-      }
-      if (playerOneChoice === Weapons.Scissors) {
+      } 
+      if (playerOneChoice === Weapons.Scissors || playerOneChoice === Weapons.Spock) {
         playerOneLose();
       } else if (playerOneChoice === Weapons.Rock) {
         // draw();
@@ -162,10 +162,10 @@ export default function Game({ count = 0, result = '', playerOneName, lang, game
     }
 
     if (playerTwoChoice === Weapons.Paper) {
-      if (playerOneChoice === Weapons.Rock) {
+      if (playerOneChoice === Weapons.Rock || playerOneChoice === Weapons.Spock) {
         playerOneLose();
       }
-      if (playerOneChoice === Weapons.Scissors) {
+      if (playerOneChoice === Weapons.Scissors || playerOneChoice === Weapons.Lizard) {
         playerOneWin();
       } else if (playerOneChoice === Weapons.Paper) {
         // draw();
@@ -173,12 +173,34 @@ export default function Game({ count = 0, result = '', playerOneName, lang, game
     }
 
     if (playerTwoChoice === Weapons.Scissors) {
-      if (playerOneChoice === Weapons.Rock) {
+      if (playerOneChoice === Weapons.Rock || playerOneChoice === Weapons.Spock) {
         playerOneWin();
       }
-      if (playerOneChoice === Weapons.Paper) {
+      if (playerOneChoice === Weapons.Paper || playerOneChoice === Weapons.Lizard) {
         playerOneLose();
       } else if (playerOneChoice === Weapons.Scissors) {
+        // draw();
+      }
+    }
+
+    if (playerTwoChoice === Weapons.Spock) {
+      if (playerOneChoice === Weapons.Paper || playerOneChoice === Weapons.Lizard) {
+        playerOneLose();
+      }
+      if (playerOneChoice === Weapons.Rock || playerOneChoice === Weapons.Scissors) {
+        playerOneWin();
+      } else if (playerOneChoice === Weapons.Spock) {
+        // draw();
+      }
+    }
+
+    if (playerTwoChoice === Weapons.Lizard) {
+      if (playerOneChoice === Weapons.Paper || playerOneChoice === Weapons.Spock) {
+        playerOneLose();
+      }
+      if (playerOneChoice === Weapons.Rock || playerOneChoice === Weapons.Scissors) {
+        playerOneWin();
+      } else if (playerOneChoice === Weapons.Lizard) {
         // draw();
       }
     }
@@ -195,7 +217,6 @@ export default function Game({ count = 0, result = '', playerOneName, lang, game
 
   return (
     <main>
-    
       {/* <React.Fragment></React.Fragment> */}
       <div className={'md-modal md-effect-1 ' + myModalClass} id='modal-1'>
         <div className='md-content'>
@@ -217,12 +238,50 @@ export default function Game({ count = 0, result = '', playerOneName, lang, game
       </div>
 
       <div className='battlefield'>
-        <div className='weapon rock' onClick={() => checkRound(Weapons.Rock)} style={styles.rock}></div>
-        <div className='weapon scissors' onClick={() => checkRound(Weapons.Scissors)} style={styles.scissors}></div>
-        <div className='weapon paper' onClick={() => checkRound(Weapons.Paper)} style={styles.paper}></div>
-        <div className='weapon lizard hidden' onClick={() => checkRound(Weapons.Lizard)} style={styles.lizard}></div>
-        <div className='weapon spock hidden' onClick={() => checkRound(Weapons.Spock)} style={styles.spock}></div>
-        {/* <div className='centre'>*</div> */}
+        <div
+          className='weapon rock'
+          onClick={() => {
+            playWeaponSound();
+            checkRound(Weapons.Rock);
+          }}
+          style={styles.rock}
+        ></div>
+        <div
+          className='weapon scissors'
+          onClick={() => {
+            playWeaponSound();
+            checkRound(Weapons.Scissors);
+          }}
+          style={styles.scissors}
+        ></div>
+        <div
+          className='weapon paper'
+          onClick={() => {
+            playWeaponSound();
+            checkRound(Weapons.Paper);
+          }}
+          style={styles.paper}
+        ></div>
+        {gameMode === 'hard' && (
+          <div
+            className='weapon lizard'
+            onClick={() => {
+              playWeaponSound();
+              checkRound(Weapons.Lizard);
+            }}
+            style={styles.lizard}
+          ></div>
+        )}
+        {gameMode === 'hard' && (
+          <div
+            className='weapon spock'
+            onClick={() => {
+              playWeaponSound();
+              checkRound(Weapons.Spock);
+            }}
+            style={styles.spock}
+          ></div>
+        )}
       </div>
       <div className='stats-string'>
         <h2 className='player1-result-header'>

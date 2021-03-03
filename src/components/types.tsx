@@ -6,6 +6,7 @@ export interface GameProps {
   gameSkin: string;
   setVolume: any;
   volume: number;
+  gameMode: string;
 }
 
 // export interface ModalProps {

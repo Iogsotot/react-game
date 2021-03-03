@@ -193,6 +193,7 @@ function App() {
             gameSkin={skin}
             volume={soundVolume}
             setVolume={setSoundVolume}
+            gameMode={mode}
           />
         </div>
         <div className='maximizable-actions'>

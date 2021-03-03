@@ -20,7 +20,7 @@ export default function Setting({
   onModeChange,
   gameMode,
   isSettingOpen,
-  setSettingOpen
+  setSettingOpen,
 }: SettingProps) {
   // const [isOpen, setIsOpen] = useState(false);
   // const [inputValue, setInputValue] = useState('Player 1');
@@ -57,21 +57,36 @@ export default function Setting({
             </label>
             <div className='game-skin'>
               <h3 className='modal__subtitle'>{layouts[gameLang].selectSkin}:</h3>
-              <div onClick={() => onSkinClick('round')}>
-                <img src={hand} alt='hand' className='game-skin--round-icons icon--setting' />
-              </div>
-              <div onClick={() => onSkinClick('cats')}>
-                <img src={paw} alt='paw' className='game-skin--round-icons icon--setting' />
-              </div>
+
+              <img
+                src={hand}
+                alt='hand'
+                className='icons--skin icon--setting'
+                onClick={() => onSkinClick('round')}
+              />
+
+              <img
+                src={paw}
+                alt='paw'
+                className='icons--skin icon--setting'
+                onClick={() => onSkinClick('cats')}
+              />
             </div>
             <div className='game-lang'>
               <h3 className='modal__subtitle'>{layouts[gameLang].selectLang}:</h3>
-              <div className='game-lang--ru icon--setting' onClick={() => changeLang('ru')}>
-                <img src={ru} alt='paw' className='game-skin--round-icons icon--setting' />
-              </div>
-              <div className='game-lang--en icon--setting' onClick={() => changeLang('en')}>
-                <img src={en} alt='paw' className='game-skin--round-icons icon--setting' />
-              </div>
+              <img
+                src={ru}
+                alt='paw'
+                className='icons--lang icon--setting'
+                onClick={() => changeLang('ru')}
+              />
+
+              <img
+                src={en}
+                alt='paw'
+                className='icons--lang icon--setting'
+                onClick={() => changeLang('en')}
+              />
             </div>
             <div className='game-mode'>
               <h3 className='modal__subtitle'>{layouts[gameLang].selectMode}:</h3>
@@ -79,7 +94,7 @@ export default function Setting({
               <Button
                 variant='contained'
                 color='secondary'
-                className='game-mode--ru icon--setting btn--game-mode'
+                className='icons--mode icon--setting btn--game-mode'
                 onClick={() => changeGameMode('normal')}
               >
                 {layouts[gameLang].gameModeNormal}
@@ -87,13 +102,18 @@ export default function Setting({
               <Button
                 variant='contained'
                 color='secondary'
-                className='game-mode--en icon--setting btn--game-mode'
+                className='icons--mode icon--setting btn--game-mode'
                 onClick={() => changeGameMode('hard')}
               >
                 {layouts[gameLang].gameModeIntersting}
               </Button>
             </div>
-            <Button onClick={() => setSettingOpen(false)} variant='contained' color='primary' className='btn btn--close'>
+            <Button
+              onClick={() => setSettingOpen(false)}
+              variant='contained'
+              color='primary'
+              className='btn btn--close'
+            >
               {layouts[gameLang].btnClose}
             </Button>
           </div>
