@@ -268,7 +268,7 @@ export default function Game({
             checkRound(Weapons.Rock);
           }}
           style={styles.rock}
-        ></div>
+        />
         <div
           className='weapon scissors'
           onClick={() => {
@@ -276,7 +276,7 @@ export default function Game({
             checkRound(Weapons.Scissors);
           }}
           style={styles.scissors}
-        ></div>
+        />
         <div
           className='weapon paper'
           onClick={() => {
@@ -284,7 +284,7 @@ export default function Game({
             checkRound(Weapons.Paper);
           }}
           style={styles.paper}
-        ></div>
+        />
         {gameMode === 'hard' && (
           <div
             className='weapon lizard'
@@ -293,7 +293,7 @@ export default function Game({
               checkRound(Weapons.Lizard);
             }}
             style={styles.lizard}
-          ></div>
+          />
         )}
         {gameMode === 'hard' && (
           <div
@@ -303,7 +303,7 @@ export default function Game({
               checkRound(Weapons.Spock);
             }}
             style={styles.spock}
-          ></div>
+          />
         )}
       </div>
       <div className='stats-string'>
@@ -318,7 +318,7 @@ export default function Game({
 
         <div className='round-stats'>
           <h3 className='round-header round'>
-            {roundCount} {layouts[lang].round}:<div className='strip'></div>
+            {roundCount} {layouts[lang].round}:<div className='strip'/>
           </h3>
           <p className='player1-result-round'>{playerOneResult ? layouts[lang][playerOneResult] : ' '}</p>
           <p className='player2-result-round'>{playerTwoResult ? layouts[lang][playerTwoResult] : ' '}</p>
