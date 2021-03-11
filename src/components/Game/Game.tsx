@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState, useEffect, useRef } from 'react';
 import Button from '@material-ui/core/Button';
 import './Game.scss';
@@ -326,8 +327,8 @@ export default function Game({ count = 0, result = '', playerOneName, lang, game
           <h3 className='round-header round'>
             {roundCount} {layouts[lang].round}:<div className='strip'></div>
           </h3>
-          <p className='player1-result-round'>{playerOneResult ? playerOneResult : ' '}</p>
-          <p className='player2-result-round'>{playerTwoResult ? playerTwoResult : ' '}</p>
+          <p className='player1-result-round'>{playerOneResult ? layouts[lang][playerOneResult] : ' '}</p>
+          <p className='player2-result-round'>{playerTwoResult ? layouts[lang][playerTwoResult] : ' '}</p>
         </div>
       </div>
     </main>

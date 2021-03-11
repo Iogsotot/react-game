@@ -3,8 +3,8 @@ import en from './en';
 import { LangMapProps } from '../types';
 
 const layouts: LangMapProps = {
-  'ru': ru,
-  'en': en,
+  ru,
+  en,
 };
 
 export default layouts;

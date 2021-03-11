@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Modal.scss';
 import './Help.scss';
 import Button from '@material-ui/core/Button';
@@ -6,8 +6,6 @@ import layouts from '../layouts/layouts';
 import { HelpProps } from '../types';
 
 export default function Help({ lang, isHelpOpen, setHelpOpen }: HelpProps) {
-  // const [isOpen, setIsOpen] = useState(false);
-
   return (
     <React.Fragment>
       <Button className='btn' variant='contained' color='primary' onClick={() => setHelpOpen(true)}>

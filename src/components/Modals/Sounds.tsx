@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState } from 'react';
 import Button from '@material-ui/core/Button';
 import './Modal.scss';

@@ -1,3 +1,4 @@
+/* eslint-disable */
 const en = {
   setting: 'Setting',
   nameDefaulft: 'Player 1',
@@ -35,7 +36,12 @@ const en = {
   soundSubtitle: 'sound',
   musicSubtitle: 'music',
   autoplay: 'autoplay',
-  hotkeys: 'Hotkeys: 1 - settings; 2 - score; 3 - new game; 4 - help; 5 - sound settings'
+  hotkeys: 'Hotkeys: 1 - settings; 2 - score; 3 - new game; 4 - help; 5 - sound settings',
+  Scissors: 'scissors',
+  Paper: 'paper',
+  Rock: 'rock',
+  Lizard: 'lizard',
+  Spock: 'spock'
 };
 
 export default en;

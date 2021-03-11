@@ -1,3 +1,4 @@
+/* eslint-disable */
 import useSound from 'use-sound';
 import Checkbox from '@material-ui/core/Checkbox';
 import React, { useState } from 'react';

@@ -1,3 +1,4 @@
+/* eslint-disable */
 const ru = {
   setting: 'Настройки',
   nameDefaulft: 'Игрок 1',
@@ -36,6 +37,11 @@ const ru = {
   musicSubtitle: 'музыка',
   autoplay: 'автоигра',
   hotkeys: 'Горячие клавиши: 1 - настройки; 2 - Зал славы; 3 - новая игра; 4 - помощь; 5 - настройки звука',
+  Scissors: 'ножницы',
+  Paper: 'бумага',
+  Rock: 'камень',
+  Lizard: 'ящерица',
+  Spock: 'спок'
 };
 
 export default ru;
