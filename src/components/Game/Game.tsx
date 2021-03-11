@@ -213,7 +213,8 @@ export default function Game({
 
   useInterval(() => {
     if (isAutoPlay) {
-      if (roundCount >= 3) {
+      const maxRoundCount = 3;
+      if (roundCount >= maxRoundCount) {
         stopGame();
         setIsAutoPlay(false);
       } else {
