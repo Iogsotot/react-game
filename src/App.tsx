@@ -78,6 +78,14 @@ function App(): JSX.Element {
 
   const [playThemeSound] = useSound(themeSound, { volume: musicVolume });
 
+  function closeMusicModal(withMusic = true): any {
+    if (!withMusic) {
+      setMusicVolume(0);
+    }
+    setMusicModalQuestion(false);
+    playThemeSound();
+  }
+
   return (
     <div className='App' onKeyDown={handleKeyPress} tabIndex={0}>
       <header className='App__header'>
@@ -128,9 +136,7 @@ function App(): JSX.Element {
                     src={cancelBtn}
                     alt='X'
                     onClick={() => {
-                      setMusicModalQuestion(false);
-                      playThemeSound();
-                      setMusicVolume(0);
+                      closeMusicModal(false);
                     }}
                     className='btn--cancel'
                   />
@@ -141,8 +147,7 @@ function App(): JSX.Element {
                       variant='contained'
                       color='primary'
                       onClick={() => {
-                        setMusicModalQuestion(false);
-                        playThemeSound();
+                        closeMusicModal();
                       }}
                       onKeyDown={handleKeyPress}
                     >
@@ -153,9 +158,7 @@ function App(): JSX.Element {
                       variant='contained'
                       color='secondary'
                       onClick={() => {
-                        setMusicModalQuestion(false);
-                        playThemeSound();
-                        setMusicVolume(0);
+                        closeMusicModal(false);
                       }}
                       onKeyDown={handleKeyPress}
                     >
