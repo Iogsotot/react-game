@@ -1,13 +1,10 @@
-/* eslint-disable */
 import React, { useState, useEffect, useRef } from 'react';
 import Button from '@material-ui/core/Button';
+import useSound from 'use-sound';
 import './Game.scss';
-// import '../Modals/Modal.scss';
-import { GameProps } from '../types';
+import { setInterval } from 'timers';
 import { Weapons } from '../constants';
 import layouts from '../layouts/layouts';
-
-import useSound from 'use-sound';
 
 import rockIconRound from '../../assets/rock.svg';
 import scissorsIconRound from '../../assets/scissors.svg';
@@ -20,10 +17,21 @@ import paperIconCats from '../../assets/paper--cat.png';
 import lizardIconCats from '../../assets/lizard--cat.png';
 import spockIconCats from '../../assets/spock--cat.png';
 
+// eslint-disable-next-line
 import weaponSound from './../../assets/sounds/puk.mp3';
-import { setInterval } from 'timers';
 
-export default function Game({ count = 0, result = '', playerOneName, lang, gameSkin, volume, gameMode, setGameWinner }: GameProps) {
+import { GameProps } from '../types';
+
+export default function Game({
+  count = 0,
+  result = '',
+  playerOneName,
+  lang,
+  gameSkin,
+  volume,
+  gameMode,
+  setGameWinner,
+}: GameProps): any {
   const [roundCount, setRoundCount] = useState(count);
   const [playerOneResult, setPlayerOneResult] = useState(result);
   const [playerTwoResult, setPlayerTwoResult] = useState(result);
@@ -34,10 +42,10 @@ export default function Game({ count = 0, result = '', playerOneName, lang, game
   const [myModalClass, setMyModalClass] = useState('');
   const [isAutoPlay, setIsAutoPlay] = useState(false);
 
-  const [playWeaponSound] = useSound(weaponSound, { volume: volume });
+  const [playWeaponSound] = useSound(weaponSound, { volume });
 
   function getSkin(skin: string) {
-    let skinIcons = {
+    const skinIcons = {
       rock: rockIconRound,
       paper: paperIconRound,
       scissors: scissorsIconRound,
@@ -72,14 +80,14 @@ export default function Game({ count = 0, result = '', playerOneName, lang, game
     },
   };
 
-  let totalGames: number = 3;
-  let playerTwoName: string = layouts[lang].enemyName;
+  const totalGames = 3;
+  const playerTwoName: string = layouts[lang].enemyName;
 
   function getRandomAnswer(min: number, max: number) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    let result: number;
-    return (result = Math.floor(Math.random() * (max - min + 1)) + min);
+    const newMin = Math.ceil(min);
+    const newMax = Math.floor(max);
+    const randomResult: number = Math.floor(Math.random() * (newMax - newMin + 1)) + newMin;
+    return randomResult;
   }
 
   function resetGame() {
@@ -88,26 +96,22 @@ export default function Game({ count = 0, result = '', playerOneName, lang, game
     setRoundCount(0);
     setPlayerOneResult('');
     setPlayerTwoResult('');
-    // document.removeEventListener('click', () => closeModal());
   }
 
   function stopGame() {
-    console.log('конец игры');
     if (playerOneScore > playerTwoScore) {
       setRoundResult(layouts[lang].winTitle);
-      setEndGameMsg(layouts[lang].winText + ' ' + playerOneName);
+      setEndGameMsg(`${layouts[lang].winText} ${playerOneName}`);
       setGameWinner(playerOneName);
     }
     if (playerOneScore < playerTwoScore) {
       setRoundResult(layouts[lang].loseTitle);
-      setEndGameMsg(layouts[lang].winText + ' ' + playerTwoName);
+      setEndGameMsg(`${layouts[lang].winText} ${playerTwoName}`);
     } else if (playerOneScore === playerTwoScore) {
       setRoundResult(layouts[lang].drawTitle);
       setEndGameMsg(layouts[lang].drawText);
     }
     setMyModalClass('md-show');
-    // document.addEventListener('click', () => closeModal());
-    // resetGame();
   }
 
   useEffect(() => {
@@ -133,36 +137,22 @@ export default function Game({ count = 0, result = '', playerOneName, lang, game
     }, [callback]);
 
     // Set up the interval.
+    // eslint-disable-next-line consistent-return
     useEffect(() => {
       function tick() {
-        //I'm very sorry about this
+        // I'm very sorry about this
+        // eslint-disable-next-line
         //@ts-ignore
         savedCallback.current();
       }
       if (delay !== null) {
-        let id = setInterval(tick, delay);
+        const id = setInterval(tick, delay);
         return () => clearInterval(id);
       }
     }, [delay]);
   }
 
-  useInterval(() => {
-    if (isAutoPlay) {
-      if (roundCount >= 3) {
-        stopGame();
-        setIsAutoPlay(false);
-      } else {
-        let playerOneChoice: number = getRandomAnswer(0, 2);
-        if (gameMode === 'hard') {
-          playerOneChoice = getRandomAnswer(0, 4);
-        }
-        checkRound(playerOneChoice);
-        console.log(roundCount);
-      }
-    }
-  }, 2000);
-
-  function checkRound(weapon: number, timerId?: any): void {
+  function checkRound(weapon: number): void {
     playWeaponSound();
     setRoundCount(roundCount + 1);
 
@@ -181,8 +171,6 @@ export default function Game({ count = 0, result = '', playerOneName, lang, game
       }
       if (playerOneChoice === Weapons.Scissors || playerOneChoice === Weapons.Spock) {
         playerOneLose();
-      } else if (playerOneChoice === Weapons.Rock) {
-        // draw();
       }
     }
 
@@ -192,8 +180,6 @@ export default function Game({ count = 0, result = '', playerOneName, lang, game
       }
       if (playerOneChoice === Weapons.Scissors || playerOneChoice === Weapons.Lizard) {
         playerOneWin();
-      } else if (playerOneChoice === Weapons.Paper) {
-        // draw();
       }
     }
 
@@ -203,8 +189,6 @@ export default function Game({ count = 0, result = '', playerOneName, lang, game
       }
       if (playerOneChoice === Weapons.Paper || playerOneChoice === Weapons.Lizard) {
         playerOneLose();
-      } else if (playerOneChoice === Weapons.Scissors) {
-        // draw();
       }
     }
 
@@ -214,8 +198,6 @@ export default function Game({ count = 0, result = '', playerOneName, lang, game
       }
       if (playerOneChoice === Weapons.Rock || playerOneChoice === Weapons.Scissors) {
         playerOneWin();
-      } else if (playerOneChoice === Weapons.Spock) {
-        // draw();
       }
     }
 
@@ -225,18 +207,29 @@ export default function Game({ count = 0, result = '', playerOneName, lang, game
       }
       if (playerOneChoice === Weapons.Rock || playerOneChoice === Weapons.Scissors) {
         playerOneWin();
-      } else if (playerOneChoice === Weapons.Lizard) {
-        // draw();
       }
     }
-    return;
   }
+
+  useInterval(() => {
+    if (isAutoPlay) {
+      if (roundCount >= 3) {
+        stopGame();
+        setIsAutoPlay(false);
+      } else {
+        let playerOneChoice: number = getRandomAnswer(0, 2);
+        if (gameMode === 'hard') {
+          playerOneChoice = getRandomAnswer(0, 4);
+        }
+        checkRound(playerOneChoice);
+      }
+    }
+  }, 2000);
 
   function closeModal() {
     setMyModalClass('');
     resetGame();
   }
-
 
   return (
     <main>
@@ -248,7 +241,7 @@ export default function Game({ count = 0, result = '', playerOneName, lang, game
       >
         {layouts[lang].autoplay}
       </Button>
-      <div className={'md-modal md-effect-1 ' + myModalClass} id='modal-1'>
+      <div className={`md-modal md-effect-1 ${myModalClass}`} id='modal-1'>
         <div className='md-content'>
           <h3 className='modal__title'>{roundResult}</h3>
           <div>
@@ -315,11 +308,11 @@ export default function Game({ count = 0, result = '', playerOneName, lang, game
       </div>
       <div className='stats-string'>
         <h2 className='player1-result-header'>
-          {playerOneName} {layouts[lang].score + ' '}
+          {playerOneName} {`${layouts[lang].score} `}
           {playerOneScore} / {totalGames}
         </h2>
         <h2 className='player2-result-header'>
-          {playerTwoName} {layouts[lang].score + ' '}
+          {playerTwoName} {`${layouts[lang].score} `}
           {playerTwoScore} / {totalGames}
         </h2>
 

@@ -1,6 +1,4 @@
-/* eslint-disable */
-
-import React, { useState } from 'react';
+import React from 'react';
 import Button from '@material-ui/core/Button';
 import './Modal.scss';
 import './Setting.scss';
@@ -16,17 +14,12 @@ export default function Setting({
   playerName,
   onNameChange,
   onSkinChange,
-  gameSkin,
   onLangChange,
   gameLang,
   onModeChange,
-  gameMode,
   isSettingOpen,
   setSettingOpen,
-}: SettingProps) {
-  // const [isOpen, setIsOpen] = useState(false);
-  // const [inputValue, setInputValue] = useState('Player 1');
-
+}: SettingProps): any {
   function handleChange(e: any) {
     onNameChange(e.target.value);
   }

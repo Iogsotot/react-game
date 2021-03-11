@@ -25,7 +25,6 @@ $lightest: #e1f5fe;
 
 .dialogContent {
   font-size: 1.6rem !important;
-  // color: red !important;
 }
 
 .modal__body {
@@ -133,7 +132,6 @@ $lightest: #e1f5fe;
   .game-lang,
   .game-mode {
     display: flex;
-    // flex-direction: column;
     flex-wrap: wrap;
     justify-content: space-evenly;
     width: inherit;
@@ -173,9 +171,6 @@ $lightest: #e1f5fe;
   max-width: 49rem;
   min-width: 32rem;
   height: auto;
-
-  // border: 1px solid transparent;
-  // border-radius: 1rem;
 
   z-index: 2000;
   visibility: hidden;
@@ -304,7 +299,6 @@ $lightest: #e1f5fe;
   }
   .modal__body {
     width: 50rem;
-    // height: ;
   }
 }
 

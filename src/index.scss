@@ -31,11 +31,8 @@ body {
   height: 8rem;
   padding: 0.7rem;
   width: 100%;
-  // background-color: #b2ebe0;
-  // background-color: #90c9bf;
   background-color: $primary;
   text-align: center;
-  // text-transform: uppercase;
 }
 
 .App__header {
@@ -50,7 +47,6 @@ body {
 }
 
 .App__footer {
-  // background-color: #548a80;
   background-color: $dark;
   .wrapper {
     width: 100%;
@@ -104,6 +100,5 @@ body {
 @media (min-height: 1200px) {
   html {
     font-size: 14px;
-    // color: brown;
   }
 }

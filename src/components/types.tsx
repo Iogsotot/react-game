@@ -10,10 +10,6 @@ export interface GameProps {
   setGameWinner: any;
 }
 
-// ?? 
-// interface Ilang {
-//   [key: string]: string;
-// }
 export interface LangMapProps {
   [key: string]: any;
 }
@@ -27,7 +23,6 @@ export interface SettingProps extends React.HTMLAttributes<HTMLElement> {
   gameLang: string;
   onModeChange: any;
   gameMode: string;
-  // onClick: any;
   isSettingOpen: boolean;
   setSettingOpen: any;
 }
@@ -52,12 +47,6 @@ export interface HelpProps {
   lang: string;
   isHelpOpen: boolean;
   setHelpOpen: any;
-}
-
-export interface ScoreProps {
-  lang: string;
-  isScoreOpen: boolean;
-  setScoreOpen: any;
 }
 
 export interface AudioProps {

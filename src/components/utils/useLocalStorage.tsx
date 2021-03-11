@@ -1,8 +1,8 @@
-/* eslint-disable */
+// hook by Dan Abramov
 import { useState } from 'react';
 
 // Hook
-export default function useLocalStorage(key: string, initialValue: string) {
+export default function useLocalStorage(key: string, initialValue: string): any {
   // State to store our value
   // Pass initial state function to useState so logic is only executed once
   const [storedValue, setStoredValue] = useState(() => {
@@ -22,7 +22,7 @@ export default function useLocalStorage(key: string, initialValue: string) {
   // ... persists the new value to localStorage.
   const setValue = (value: any) => {
     try {
-      // Allow value to be a function so we have same API as useState  
+      // Allow value to be a function so we have same API as useState
       const valueToStore = value instanceof Function ? value(storedValue) : value;
       // Save state
       setStoredValue(valueToStore);

@@ -1,4 +1,3 @@
-/* eslint-disable */
 const en = {
   setting: 'Setting',
   nameDefaulft: 'Player 1',
@@ -17,9 +16,14 @@ const en = {
   btnStart: 'Start!',
   help: 'How to play',
   gameInstruction:
-    'The winner is determined according to the following rules: paper beats stone (“paper wraps around stone”) Stone beats scissors (“stone dulls or breaks scissors”). Scissors beat paper ("scissors cut paper").',
+    'The winner is determined according to the following rules: paper beats stone'
+    + ' (“paper wraps around stone”) Stone beats scissors (“stone dulls or breaks scissors”).'
+    + ' Scissors beat paper ("scissors cut paper").',
   gameInstructionExtended:
-    'Advanced version: scissors cut the paper. The paper wraps the stone. The rock crushes the lizard, and the lizard hounds Spock, while Spock breaks the scissors, which in turn cut off the head of the lizard, which is eating the paper on which there is evidence against Spock. Spock vaporizes the stone, and the stone, of course, dulls the scissors.',
+    'Advanced version: scissors cut the paper. The paper wraps the stone. The rock crushes'
+    + ' the lizard, and the lizard hounds Spock, while Spock breaks the scissors, which in'
+    + ' turn cut off the head of the lizard, which is eating the paper on which there is'
+    + ' evidence against Spock. Spock vaporizes the stone, and the stone, of course, dulls the scissors.',
   soundTitle: 'Sound settings',
   youtube: 'Game review',
   author: 'Anna Justus',
@@ -41,7 +45,7 @@ const en = {
   Paper: 'paper',
   Rock: 'rock',
   Lizard: 'lizard',
-  Spock: 'spock'
+  Spock: 'spock',
 };
 
 export default en;

@@ -14,8 +14,6 @@ $primary: #b2dfdb;
   justify-items: center;
   justify-content: center;
 
-  // background: linear-gradient(0.25turn, #59d2e7, #f8faf7, #f6673c);
-
   .round-stats {
     grid-column-start: 1;
     grid-column-end: 3;
@@ -34,8 +32,6 @@ $primary: #b2dfdb;
     width: 100%;
     width: -moz-available; /* WebKit-based browsers will ignore this. */
     width: -webkit-fill-available; /* Mozilla-based browsers will ignore this. */
-    // width: fill-available;  // react warning
-
     text-align: center;
   }
 
@@ -77,25 +73,18 @@ $primary: #b2dfdb;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
-  // height: 20rem;
-  // width: 20rem;
   gap: 1rem;
   height: 45vmin;
   width: 45vmin;
 
-  // aspect-ratio: 1/1;
-  // height: auto;
-  // margin: 1rem auto;
   margin: auto auto 10rem;
-
-  // animation: 7s infinite spin linear;
 
   .weapon {
     display: block;
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    &:hover{
+    &:hover {
       cursor: pointer;
       transform: scale(1.2);
     }
@@ -149,9 +138,6 @@ $primary: #b2dfdb;
 
 @media (min-height: 680px) {
   .battlefield {
-    // aspect-ratio: 1/1;
-    // height: auto;
-    // // width: auto;
     margin: auto;
   }
 }
